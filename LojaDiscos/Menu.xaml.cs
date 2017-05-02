@@ -30,5 +30,41 @@ namespace LojaDiscos
             Venda venda = new Venda();
             this.NavigationService.Navigate(venda);
         }
+
+        private void reservaCliente_Click(object sender, RoutedEventArgs e)
+        {
+            Reserva reserva = new Reserva();
+            this.NavigationService.Navigate(reserva);
+        }
+
+        private void gerirCliente_Click(object sender, RoutedEventArgs e)
+        {
+            GerirClientes gerirClientes = new GerirClientes();
+            this.NavigationService.Navigate(gerirClientes);
+        }
+
+        private void gerirFornecedor_Click(object sender, RoutedEventArgs e)
+        {
+            GerirFornecedores gerirFornecedores = new GerirFornecedores();
+            this.NavigationService.Navigate(gerirFornecedores);
+        }
+
+        private void discos_Click(object sender, RoutedEventArgs e)
+        {
+            Discos discos = new Discos();
+            this.NavigationService.Navigate(discos);
+        }
+
+        private void encomendaFornecedor_Click(object sender, RoutedEventArgs e)
+        {
+            Encomenda encomenda = new Encomenda();
+            this.NavigationService.Navigate(encomenda);
+        }
+
+        private void validarFornecedor_Click(object sender, RoutedEventArgs e)
+        {
+            ValidarEncomenda validarEncomenda = new ValidarEncomenda();
+            this.NavigationService.Navigate(validarEncomenda);
+        }
     }
 }

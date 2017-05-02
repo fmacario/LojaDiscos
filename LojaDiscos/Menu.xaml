@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:LojaDiscos"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="Menu">
+      WindowTitle="Menu">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -24,12 +24,12 @@
         </Grid.RowDefinitions>
 
         <Button Style="{StaticResource botoesMenu}" x:Name="vendaCliente" Content="Venda" Grid.Row="1" Grid.Column="0" Click="vendaCliente_Click"/>
-        <Button Style="{StaticResource botoesMenu}" x:Name="reservaCliente" Content="Reserva" Grid.Row="2" Grid.Column="0"/>
-        <Button Style="{StaticResource botoesMenu}" x:Name="gerirCliente" Content="Gerir Clientes" Grid.Row="3" Grid.Column="0"/>
-        <Button Style="{StaticResource botoesMenu}" x:Name="discos" Content="Discos" Grid.Row="1" Grid.Column="1"/>
-        <Button Style="{StaticResource botoesMenu}" x:Name="encomendaFornecedor" Content="Reserva" Grid.Row="1" Grid.Column="2"/>
-        <Button Style="{StaticResource botoesMenu}" x:Name="validarFornecedor" Content="Validar Reserva" Grid.Row="2" Grid.Column="2"/>
-        <Button Style="{StaticResource botoesMenu}" x:Name="gerirFornecedor" Content="Gerir Fornecedores" Grid.Row="3" Grid.Column="2"/>
+        <Button Style="{StaticResource botoesMenu}" x:Name="reservaCliente" Content="Reserva" Grid.Row="2" Grid.Column="0" Click="reservaCliente_Click"/>
+        <Button Style="{StaticResource botoesMenu}" x:Name="gerirCliente" Content="Gerir Clientes" Grid.Row="3" Grid.Column="0" Click="gerirCliente_Click"/>
+        <Button Style="{StaticResource botoesMenu}" x:Name="discos" Content="Discos" Grid.Row="1" Grid.Column="1" Click="discos_Click"/>
+        <Button Style="{StaticResource botoesMenu}" x:Name="encomendaFornecedor" Content="Encomenda" Grid.Row="1" Grid.Column="2" Click="encomendaFornecedor_Click"/>
+        <Button Style="{StaticResource botoesMenu}" x:Name="validarFornecedor" Content="Validar Encomenda" Grid.Row="2" Grid.Column="2" Click="validarFornecedor_Click"/>
+        <Button Style="{StaticResource botoesMenu}" x:Name="gerirFornecedor" Content="Gerir Fornecedores" Grid.Row="3" Grid.Column="2" Click="gerirFornecedor_Click"/>
         <Label x:Name="clientes" Content="Clientes" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontWeight="Bold" TextBlock.FontSize="20" TextBlock.FontFamily="Century Gothic"/>
         <Label x:Name="loja" Content="Loja" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontWeight="Bold" TextBlock.FontSize="20" TextBlock.FontFamily="Century Gothic"/>
         <Label x:Name="fornecedores" Content="Fornecedores" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontWeight="Bold" TextBlock.FontSize="20" TextBlock.FontFamily="Century Gothic"/>

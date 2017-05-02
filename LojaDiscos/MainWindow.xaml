@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LojaDiscos"
         mc:Ignorable="d"
-        Title="Menu" Source="Menu.xaml"
+        Title="Loja de Discos" Source="Menu.xaml"
         WindowState = "Maximized">
     
 </NavigationWindow>

@@ -55,12 +55,46 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Discos.xaml.cs">
+      <DependentUpon>Discos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Encomenda.xaml.cs">
+      <DependentUpon>Encomenda.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GerirClientes.xaml.cs">
+      <DependentUpon>GerirClientes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GerirFornecedores.xaml.cs">
+      <DependentUpon>GerirFornecedores.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reserva.xaml.cs">
+      <DependentUpon>Reserva.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ValidarEncomenda.xaml.cs">
+      <DependentUpon>ValidarEncomenda.xaml</DependentUpon>
     </Compile>
     <Compile Include="Venda.xaml.cs">
       <DependentUpon>Venda.xaml</DependentUpon>
     </Compile>
+    <Page Include="Discos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Encomenda.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GerirClientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GerirFornecedores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,6 +108,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reserva.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ValidarEncomenda.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
