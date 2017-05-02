@@ -27,19 +27,55 @@
         <ListView x:Name="listView" Height="500" Width="1000" Grid.ColumnSpan="5" Grid.Row="1">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Código" Width="200"/>
-                    <GridViewColumn Header="Designação" Width="500"/>
-                    <GridViewColumn Header="Quantidade" Width="100"/>
-                    <GridViewColumn Header="Preço Unit." Width="100"/>
-                    <GridViewColumn Header="Preço Total" Width="100"/>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style>
+                            <Setter Property="TextElement.FontSize" Value="17" />
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn Header="Código" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Designação" Width="500">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Quantidade" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Preço Unit." Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Preço Total" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <RadioButton x:Name="numerario" Content="Numerário" Grid.Column="1" Grid.Row="3"/>
-        <RadioButton x:Name="cartao" Content="Cartão" Grid.Column="2" Grid.Row="3"/>
-        <RadioButton x:Name="cheque" Content="Cheque" Grid.Column="3" Grid.Row="3"/>
+        <RadioButton x:Name="numerario" Content="Numerário" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"/>
+        <RadioButton x:Name="cartao" Content="Cartão" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center"/>
+        <RadioButton x:Name="cheque" Content="Cheque" Grid.Column="3" Grid.Row="2" VerticalAlignment="Center"/>
 
-        <Button x:Name="concluirVenda" Content="Concluir" Grid.Column="4" Grid.Row="4" Width="200" Height="55"/>
+        <TextBlock x:Name="total" Text="Total: "  Grid.Column="3" Grid.Row="3" FontSize="30" VerticalAlignment="Center"/>
+        <Button x:Name="concluirVenda" Content="Concluir" Grid.Column="4" Grid.Row="3" Width="150" Height="50"/>
     </Grid>
 </Page>
