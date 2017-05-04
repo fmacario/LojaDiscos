@@ -5,8 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LojaDiscos"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      WindowTitle="Menu">
+      d:DesignHeight="300" d:DesignWidth="450"
+      WindowTitle="Menu"
+      Style="{StaticResource MyWindowStyle}">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -23,16 +24,19 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Button Style="{StaticResource botoesMenu}" x:Name="vendaCliente" Content="Venda" Grid.Row="1" Grid.Column="0" Click="vendaCliente_Click"/>
-        <Button Style="{StaticResource botoesMenu}" x:Name="reservaCliente" Content="Reserva" Grid.Row="2" Grid.Column="0" Click="reservaCliente_Click"/>
-        <Button Style="{StaticResource botoesMenu}" x:Name="gerirCliente" Content="Gerir Clientes" Grid.Row="3" Grid.Column="0" Click="gerirCliente_Click"/>
-        <Button Style="{StaticResource botoesMenu}" x:Name="discos" Content="Discos" Grid.Row="1" Grid.Column="1" Click="discos_Click"/>
-        <Button Style="{StaticResource botoesMenu}" x:Name="encomendaFornecedor" Content="Encomenda" Grid.Row="1" Grid.Column="2" Click="encomendaFornecedor_Click"/>
-        <Button Style="{StaticResource botoesMenu}" x:Name="validarFornecedor" Content="Validar Encomenda" Grid.Row="2" Grid.Column="2" Click="validarFornecedor_Click"/>
-        <Button Style="{StaticResource botoesMenu}" x:Name="gerirFornecedor" Content="Gerir Fornecedores" Grid.Row="3" Grid.Column="2" Click="gerirFornecedor_Click"/>
-        <Label x:Name="clientes" Content="Clientes" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontWeight="Bold" TextBlock.FontSize="20" TextBlock.FontFamily="Century Gothic"/>
-        <Label x:Name="loja" Content="Loja" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontWeight="Bold" TextBlock.FontSize="20" TextBlock.FontFamily="Century Gothic"/>
-        <Label x:Name="fornecedores" Content="Fornecedores" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontWeight="Bold" TextBlock.FontSize="20" TextBlock.FontFamily="Century Gothic"/>
+        <Button Style="{StaticResource botoesMenu}" x:Name="vendaCliente" Content="Venda" Grid.Row="2" Grid.Column="0" Click="vendaCliente_Click" Margin="31,0,19,0"/>
+        <Button Style="{StaticResource botoesMenu}" x:Name="reservaCliente" Content="Reserva" Grid.Row="3" Grid.Column="0" Click="reservaCliente_Click" Margin="31,0,19,0"/>
+        <Button Style="{StaticResource botoesMenu}" x:Name="gerirCliente" Content="Gerir Clientes" Grid.Row="4" Grid.Column="0" Click="gerirCliente_Click" Margin="31,0,19,0"/>
+        <Button Style="{StaticResource botoesMenu}" x:Name="discos" Content="Gestão" Grid.Row="2" Grid.Column="1" Click="discos_Click" Margin="25,0"/>
+        <Button Style="{StaticResource botoesMenu}" x:Name="encomendaFornecedor" Content="Encomenda" Grid.Row="2" Grid.Column="2" Click="encomendaFornecedor_Click" Margin="23,0,12,0" Width="Auto"/>
+        <Button Style="{StaticResource botoesMenu}" x:Name="validarFornecedor" Content="Validar Encomenda" Grid.Row="3" Grid.Column="2" Click="validarFornecedor_Click" Margin="23,0,12,0" Width="Auto"/>
+        <Button Style="{StaticResource botoesMenu}" x:Name="gerirFornecedor" Content="Gerir Fornecedores" Grid.Row="4" Grid.Column="2" Click="gerirFornecedor_Click" RenderTransformOrigin="0.478,2.294" Margin="23,0,12,0" Width="Auto"/>
+        <Label x:Name="clientes" Content="Clientes" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontWeight="Bold" TextBlock.FontSize="20" TextBlock.FontFamily="Century Gothic" Margin="31,5,31,10" Grid.Row="1"/>
+        <Label x:Name="loja" Content="Loja" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontWeight="Bold" TextBlock.FontSize="20" TextBlock.FontFamily="Century Gothic" Margin="44,5,56,10" Grid.Row="1"/>
+        <Label x:Name="fornecedores" Content="Fornecedores" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontWeight="Bold" TextBlock.FontSize="20" TextBlock.FontFamily="Century Gothic" Margin="10,5,-3,10" Grid.Row="1"/>
+        <Button Style="{StaticResource botoesMenu}" x:Name="discos_Copy" Content="Adicionar Disco" Grid.Row="3" Grid.Column="1" Click="discos_Click" Margin="25,0"/>
+        <Rectangle Fill="Gray" HorizontalAlignment="Center" Height="24" Stroke="Black" VerticalAlignment="Top" Width="450" Grid.ColumnSpan="3"/>
+        <Label x:Name="label1_Copy"  Content="Loja Discos" Foreground="White" HorizontalAlignment="Center" RenderTransformOrigin="0.447,-0.077" Width="78" Margin="35,-2,37,26" Grid.Column="1"/>
 
 
     </Grid>

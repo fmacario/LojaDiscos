@@ -1,0 +1,23 @@
+﻿<Page x:Class="LojaDiscos.login"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LojaDiscos"
+        Title="Login" Height="300" Width="500"
+        Style="{StaticResource MyWindowStyle}"
+      >
+    <Grid Margin="0,0,2,0">
+        <Button x:Name="button" Background="WhiteSmoke" Content="Validar" HorizontalAlignment="Left" Margin="120,207,0,0" VerticalAlignment="Top" Width="250" Height="29" Click="button_Click" />
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="199,99,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="171"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" Margin="199,152,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="171"/>
+        <Label x:Name="label_Copy" Content="Username" HorizontalAlignment="Left" Margin="120,96,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="Password" HorizontalAlignment="Left" Margin="120,149,0,0" VerticalAlignment="Top"/>
+        <Rectangle Fill="Silver" HorizontalAlignment="Center" Height="31" Stroke="Black" VerticalAlignment="Top" Width="250" Margin="124,45,124,0"/>
+        <Label x:Name="label1" Content="Autenticação" HorizontalAlignment="Center" RenderTransformOrigin="0.447,-0.077" Width="86" Margin="206,42,206,206"/>
+        <Rectangle Fill="Gray" HorizontalAlignment="Center" Height="24" Stroke="Black" VerticalAlignment="Top" Width="490"/>
+        <Label x:Name="label1_Copy"  Content="Loja Discos" Foreground="White" HorizontalAlignment="Center" RenderTransformOrigin="0.447,-0.077" Width="86" Margin="208,-2,204,260"/>
+
+
+    </Grid>
+</Page>

@@ -12,21 +12,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Collections.ObjectModel;
-using System.Globalization;
 
 namespace LojaDiscos
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for login.xaml
     /// </summary>
-    public partial class MainWindow : NavigationWindow
+    public partial class login : Page
     {
-        public MainWindow()
+        public login()
         {
             InitializeComponent();
         }
 
-       
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            Menu discos = new Menu();
+            this.NavigationService.Navigate(discos);
+        }
     }
 }
