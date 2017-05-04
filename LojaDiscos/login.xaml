@@ -15,7 +15,7 @@
         <Label x:Name="label" Content="Password" HorizontalAlignment="Left" Margin="120,149,0,0" VerticalAlignment="Top"/>
         <Rectangle Fill="Silver" HorizontalAlignment="Center" Height="31" Stroke="Black" VerticalAlignment="Top" Width="250" Margin="124,45,124,0"/>
         <Label x:Name="label1" Content="Autenticação" HorizontalAlignment="Center" RenderTransformOrigin="0.447,-0.077" Width="86" Margin="206,42,206,206"/>
-        <Rectangle Fill="Gray" HorizontalAlignment="Center" Height="24" Stroke="Black" VerticalAlignment="Top" Width="490"/>
+        <Rectangle Fill="Gray" HorizontalAlignment="Left" Height="24" Stroke="Black" VerticalAlignment="Top" Width="498"/>
         <Label x:Name="label1_Copy"  Content="Loja Discos" Foreground="White" HorizontalAlignment="Center" RenderTransformOrigin="0.447,-0.077" Width="86" Margin="208,-2,204,260"/>
 
 
