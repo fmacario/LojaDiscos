@@ -24,11 +24,5 @@ namespace LojaDiscos
         {
             InitializeComponent();
         }
-
-        private void criarFichaCliente_Click(object sender, RoutedEventArgs e)
-        {
-            CriarFichaCliente criarFichaCliente = new CriarFichaCliente();
-            this.NavigationService.Navigate(criarFichaCliente);
-        }
     }
 }
