@@ -16,19 +16,13 @@ using System.Windows.Shapes;
 namespace LojaDiscos
 {
     /// <summary>
-    /// Interaction logic for GerirFornecedores.xaml
+    /// Interaction logic for CriarFichaFornecedor.xaml
     /// </summary>
-    public partial class GerirFornecedores : Page
+    public partial class CriarFichaFornecedor : Page
     {
-        public GerirFornecedores()
+        public CriarFichaFornecedor()
         {
             InitializeComponent();
-        }
-
-        private void criarFichaCliente_Click(object sender, RoutedEventArgs e)
-        {
-            CriarFichaFornecedor criarFichaFornecedor = new CriarFichaFornecedor();
-            this.NavigationService.Navigate(criarFichaFornecedor);
         }
     }
 }

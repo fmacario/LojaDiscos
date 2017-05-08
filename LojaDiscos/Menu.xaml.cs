@@ -51,8 +51,8 @@ namespace LojaDiscos
 
         private void discos_Click(object sender, RoutedEventArgs e)
         {
-            Discos discos = new Discos();
-            this.NavigationService.Navigate(discos);
+            CriarDisco disco = new CriarDisco();
+            this.NavigationService.Navigate(disco);
         }
 
         private void encomendaFornecedor_Click(object sender, RoutedEventArgs e)
