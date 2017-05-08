@@ -7,5 +7,5 @@
         mc:Ignorable="d"
         Title="Loja de Discos" Source="login.xaml"
         WindowState = "Maximized">
-
+    
 </NavigationWindow>
