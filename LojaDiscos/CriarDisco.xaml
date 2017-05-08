@@ -6,6 +6,10 @@
       xmlns:local="clr-namespace:LojaDiscos"
       mc:Ignorable="d" 
       WindowTitle="Novo Disco">
+    <Page.Resources>
+        <local:lojadiscosDataSet x:Key="lojadiscosDataSet"/>
+        <CollectionViewSource x:Key="generoViewSource" Source="{Binding Genero, Source={StaticResource lojadiscosDataSet}}"/>
+    </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -31,22 +35,19 @@
         <TextBlock x:Name="artista" Text="Artista" FontSize="20" Grid.Column="1" Grid.Row="2"/>
         <TextBox x:Name="artista2" FontSize="17" Grid.ColumnSpan="3" Grid.Row="2" Height="30" VerticalAlignment="Top" Grid.Column="2" HorizontalAlignment="Stretch" MaxWidth="800" Margin="10,0,10,0"/>
         <TextBlock x:Name="genero" Text="Género" FontSize="20" Grid.Column="1" Grid.Row="3"/>
-        <ComboBox Text="Escolher Género" Height="30" Grid.ColumnSpan="1" Grid.Row="3" VerticalAlignment="Top" Grid.Column="2" HorizontalAlignment="Stretch" MaxWidth="800" Margin="10,0,10,0">
-            <ComboBoxItem Name="g1">Blues</ComboBoxItem>
-            <ComboBoxItem Name="g2">Jazz</ComboBoxItem>
-            <ComboBoxItem Name="g3">Hip-hop</ComboBoxItem>
-            <ComboBoxItem Name="g4">Rock</ComboBoxItem>
+        <ComboBox Text="Escolher Género" Name="GeneroCB" Height="30" Grid.ColumnSpan="1" Grid.Row="3" VerticalAlignment="Bottom" Grid.Column="2" HorizontalAlignment="Stretch" MaxWidth="800" Margin="10,0,10,0" ItemsSource="{Binding}" >
+
         </ComboBox>
 
         <TextBlock x:Name="nif" Text="NIF" FontSize="20" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="4"/>
-        <TextBox x:Name="nif2" FontSize="17" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="4" Width="800" Height="30" VerticalAlignment="Top" MaxLength="9"/>
+        <TextBox x:Name="nif2" FontSize="17" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="4" Width="800" Height="30" VerticalAlignment="Top" MaxLength="9" Text="{Binding genero, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
         <TextBlock x:Name="email" Text="E-mail" FontSize="20" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="5"/>
         <TextBox x:Name="email2" FontSize="17" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="5" Width="800" Height="30" VerticalAlignment="Top"/>
         <TextBlock x:Name="nTel" Text="Nº Telefone" FontSize="20" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="6"/>
         <TextBox x:Name="nTel2" FontSize="17" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="6" Width="800" Height="30" VerticalAlignment="Top" MaxLength="9"/>
 
 
-        <Button x:Name="criarCliente" Content="Criar Cliente" Grid.Column="4" Grid.Row="7" Width="150" Height="50"/>
+        <Button x:Name="criarCliente" Content="Adicionar Disco" Grid.Column="4" Grid.Row="7" Width="150" Height="50"/>
 
     </Grid>
 </Page>

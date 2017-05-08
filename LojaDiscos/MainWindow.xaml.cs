@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Data.SqlClient;
 
 namespace LojaDiscos
 {
@@ -25,6 +26,16 @@ namespace LojaDiscos
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public class ConnectionHelper
+        {
+            public static SqlConnection GetConnection()
+            {
+                string connectionStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Imagens_Discos_IHC\lojadiscos.mdf;Integrated Security=True;Connect Timeout=30";
+                SqlConnection conn = new SqlConnection(connectionStr);
+                return conn;
+            }
         }
 
 
