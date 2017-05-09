@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static LojaDiscos.MainWindow;
+using Microsoft.Win32;
 
 namespace LojaDiscos
 {
@@ -39,6 +40,20 @@ namespace LojaDiscos
             GeneroCB.ItemsSource = ds.Tables[0].DefaultView;
             GeneroCB.DisplayMemberPath = ds.Tables[0].Columns["genero"].ToString();
            
+        }
+
+        private void btnLoad_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog op = new OpenFileDialog();
+            op.Title = "Selecione uma imagem.";
+            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+              "Portable Network Graphic (*.png)|*.png";
+            if (op.ShowDialog() == true)
+            {
+                imgPhoto.Source = new BitmapImage(new Uri(op.FileName));
+            }
+
         }
 
     }
