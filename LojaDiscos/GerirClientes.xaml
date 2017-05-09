@@ -6,10 +6,79 @@
       xmlns:local="clr-namespace:LojaDiscos"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      WindowTitle="Gestão de Clientes">
+      WindowTitle="Gestão de Clientes"
+      Style="{StaticResource MyWindowStyle}">
 
     <Grid>
-        <Button x:Name="criarFichaCliente" Content="Novo Cliente" HorizontalAlignment="Left" Margin="118,168,0,0" VerticalAlignment="Top" Width="75" Click="criarFichaCliente_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="listView" Grid.ColumnSpan="5" Width="auto" Margin="20,50,20,50" MinHeight="500" SizeChanged="listView_SizeChanged" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <ListView.View>
+                <GridView>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style>
+                            <Setter Property="TextElement.FontSize" Value="17" />
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn Header="Nº Cliente" Width="auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Nome" Width="auto" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Morada" Width="auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="E-mail" Width="auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="NIF" Width="auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Nº Telefone" Width="auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+        <Button Style="{StaticResource botoes}" x:Name="criarFichaCliente" Content="Novo Cliente" Grid.Row="2" Grid.Column="2" Margin="0,0,0,10" MinWidth="100" MinHeight="45" Click="criarFichaCliente_Click"/>
             
     </Grid>
 </Page>
