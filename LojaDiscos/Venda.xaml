@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LojaDiscos"
         mc:Ignorable="d"
-        WindowTitle="Venda">
+        WindowTitle="Venda"
+        Style="{StaticResource MyWindowStyle}">
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -20,11 +22,11 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        
-        <TextBlock x:Name="clienteNome" Text="Cliente: "  Grid.Column="1"/>
-        
 
-        <ListView x:Name="listView" Height="500" Width="1000" Grid.ColumnSpan="5" Grid.Row="1">
+        <TextBlock Style="{StaticResource textBlock}" FontSize="30" x:Name="clienteNome" Text="Cliente: " VerticalAlignment="Center" Grid.Column="1"/>
+
+
+        <ListView x:Name="listView" Grid.ColumnSpan="5" Width="auto" Margin="20,0,20,0" Height="auto" MinHeight="300" Grid.Row="1" SizeChanged="listView_SizeChanged" ScrollViewer.VerticalScrollBarVisibility="Visible">
             <ListView.View>
                 <GridView>
                     <GridView.ColumnHeaderContainerStyle>
@@ -32,35 +34,35 @@
                             <Setter Property="TextElement.FontSize" Value="17" />
                         </Style>
                     </GridView.ColumnHeaderContainerStyle>
-                    <GridViewColumn Header="Código" Width="200">
+                    <GridViewColumn Header="Código" Width="auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding c1}" FontSize="15px"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Designação" Width="500">
+                    <GridViewColumn Header="Designação" Width="auto" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding c1}" FontSize="15px"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Quantidade" Width="100">
+                    <GridViewColumn Header="Quantidade" Width="auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding c1}" FontSize="15px"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Preço Unit." Width="100">
+                    <GridViewColumn Header="Preço Unit." Width="auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding c1}" FontSize="15px"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Preço Total" Width="100">
+                    <GridViewColumn Header="Preço Total" Width="auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding c1}" FontSize="15px"/>
@@ -71,11 +73,12 @@
             </ListView.View>
         </ListView>
 
-        <RadioButton x:Name="numerario" Content="Numerário" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"/>
-        <RadioButton x:Name="cartao" Content="Cartão" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center"/>
-        <RadioButton x:Name="cheque" Content="Cheque" Grid.Column="3" Grid.Row="2" VerticalAlignment="Center"/>
+        <RadioButton Style="{StaticResource radioButton}" x:Name="numerario" Content="Numerário" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"/>
+        <RadioButton Style="{StaticResource radioButton}" x:Name="cartao" Content="Cartão" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center"/>
+        <RadioButton Style="{StaticResource radioButton}" x:Name="cheque" Content="Cheque" Grid.Column="3" Grid.Row="2" VerticalAlignment="Center"/>
 
-        <TextBlock x:Name="total" Text="Total: "  Grid.Column="3" Grid.Row="3" FontSize="30" VerticalAlignment="Center"/>
-        <Button x:Name="concluirVenda" Content="Concluir" Grid.Column="4" Grid.Row="3" Width="150" Height="50"/>
+        <TextBlock Style="{StaticResource textBlock}" x:Name="total" Text="Total: " Grid.Column="2" Grid.Row="3" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBlock Style="{StaticResource textBlock}" x:Name="totalE" Text="500,00 €" Grid.Column="3" Grid.Row="3" FontSize="30" VerticalAlignment="Center"/>
+        <Button Style="{StaticResource botoes}" x:Name="concluirVenda" Content="Concluir" Grid.Column="4" Grid.Row="3" Margin="0,0,10,10" VerticalAlignment="Center" MinWidth="100" MinHeight="55"/>
     </Grid>
 </Page>
