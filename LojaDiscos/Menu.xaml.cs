@@ -51,8 +51,8 @@ namespace LojaDiscos
 
         private void discos_Click(object sender, RoutedEventArgs e)
         {
-            CriarDisco disco = new CriarDisco();
-            this.NavigationService.Navigate(disco);
+            GestaoDiscos gestaoDiscos = new GestaoDiscos();
+            this.NavigationService.Navigate(gestaoDiscos);
         }
 
         private void encomendaFornecedor_Click(object sender, RoutedEventArgs e)
@@ -65,6 +65,12 @@ namespace LojaDiscos
         {
             ValidarEncomenda validarEncomenda = new ValidarEncomenda();
             this.NavigationService.Navigate(validarEncomenda);
+        }
+
+        private void adicionaDisco_Click(object sender, RoutedEventArgs e)
+        {
+            CriarDisco criarDisco = new CriarDisco();
+            this.NavigationService.Navigate(criarDisco);
         }
     }
 }

@@ -76,6 +76,9 @@
     <Compile Include="GerirFornecedores.xaml.cs">
       <DependentUpon>GerirFornecedores.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GestaoDiscos.xaml.cs">
+      <DependentUpon>GestaoDiscos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="login.xaml.cs">
       <DependentUpon>login.xaml</DependentUpon>
     </Compile>
@@ -131,6 +134,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="GestaoDiscos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -34,7 +34,7 @@
         <Label x:Name="clientes" Content="Clientes" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontWeight="Bold" TextBlock.FontSize="20" TextBlock.FontFamily="Century Gothic"  Grid.Row="1"/>
         <Label x:Name="loja" Content="Loja" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontWeight="Bold" TextBlock.FontSize="20" TextBlock.FontFamily="Century Gothic"  Grid.Row="1"/>
         <Label x:Name="fornecedores" Content="Fornecedores" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontWeight="Bold" TextBlock.FontSize="20" TextBlock.FontFamily="Century Gothic" Grid.Row="1"/>
-        <Button Style="{StaticResource botoesMenu}" x:Name="discos_Copy" Content="Adicionar Disco" Grid.Row="3" Grid.Column="1" Click="discos_Click" />
+        <Button Style="{StaticResource botoesMenu}" x:Name="adicionaDisco" Content="Adicionar Disco" Grid.Row="3" Grid.Column="1" Click="adicionaDisco_Click" />
 
 
     </Grid>

@@ -13,7 +13,7 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition MaxWidth="100"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -31,23 +31,29 @@
         </Grid.RowDefinitions>
 
         <TextBlock x:Name="codigo" Text="Código" FontSize="20" Grid.Column="1" Grid.Row="1"/>
-        <TextBox x:Name="codigo2" FontSize="17" Grid.ColumnSpan="3" Grid.Row="1" Height="30" VerticalAlignment="Top" Grid.Column="2" HorizontalAlignment="Stretch" MaxWidth="800" Margin="10,0,10,0"/>
+        <TextBox x:Name="codigo2" FontSize="17" Grid.ColumnSpan="3" Grid.Row="1" Height="30" VerticalAlignment="Top" Grid.Column="2" HorizontalAlignment="Left" MaxWidth="800" Margin="10,0,10,0"/>
+       
         <TextBlock x:Name="artista" Text="Artista" FontSize="20" Grid.Column="1" Grid.Row="2"/>
         <TextBox x:Name="artista2" FontSize="17" Grid.ColumnSpan="3" Grid.Row="2" Height="30" VerticalAlignment="Top" Grid.Column="2" HorizontalAlignment="Stretch" MaxWidth="800" Margin="10,0,10,0"/>
-        <TextBlock x:Name="genero" Text="Género" FontSize="20" Grid.Column="1" Grid.Row="3"/>
-        <ComboBox Text="Escolher Género" Name="GeneroCB" Height="30" Grid.ColumnSpan="1" Grid.Row="3" VerticalAlignment="Bottom" Grid.Column="2" HorizontalAlignment="Stretch" MaxWidth="800" Margin="10,0,10,0" ItemsSource="{Binding}" >
 
+        <TextBlock x:Name="album" Text="Álbum" FontSize="20" Grid.Column="1" Grid.Row="3"/>
+        <TextBox x:Name="album2" FontSize="17" Grid.ColumnSpan="3" Grid.Column="2" Grid.Row="3" Height="30" VerticalAlignment="Top" HorizontalAlignment="Stretch" MaxWidth="800" Margin="10,0,10,0"/>
+
+        <TextBlock x:Name="ano" Text="Ano" FontSize="20" Grid.Column="1" Grid.Row="4"/>
+        <TextBox x:Name="ano2" FontSize="17" Grid.ColumnSpan="1" Grid.Row="4" Height="30" VerticalAlignment="Top" Grid.Column="2" HorizontalAlignment="Stretch" Width="{Binding ElementName=Container,Path=ActualWidth}" MaxWidth="100" Margin="10,0,10,0" MaxLength="4"/>
+
+
+        <TextBlock x:Name="genero" Text="Género" FontSize="20" Grid.Column="1" Grid.Row="5"/>
+        <ComboBox Text="Escolher Género" Name="GeneroCB" Height="30" Grid.ColumnSpan="1" Grid.Row="5" VerticalAlignment="Top" Grid.Column="2" HorizontalAlignment="Stretch" MaxWidth="100" Margin="10,0,10,0" ItemsSource="{Binding}" >
         </ComboBox>
 
-        <TextBlock x:Name="nif" Text="NIF" FontSize="20" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="4"/>
-        <TextBox x:Name="nif2" FontSize="17" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="4" Width="800" Height="30" VerticalAlignment="Top" MaxLength="9" Text="{Binding genero, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-        <TextBlock x:Name="email" Text="E-mail" FontSize="20" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="5"/>
-        <TextBox x:Name="email2" FontSize="17" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="5" Width="800" Height="30" VerticalAlignment="Top"/>
-        <TextBlock x:Name="nTel" Text="Nº Telefone" FontSize="20" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="6"/>
-        <TextBox x:Name="nTel2" FontSize="17" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="6" Width="800" Height="30" VerticalAlignment="Top" MaxLength="9"/>
+        <TextBlock x:Name="tipo" Text="Tipo" FontSize="20" Grid.Column="1" Grid.Row="6"/>
+        <ComboBox Text="Escolher Tipo" Name="TipoCB" Height="30" Grid.ColumnSpan="1" Grid.Row="6" VerticalAlignment="Top" Grid.Column="2" HorizontalAlignment="Stretch" MaxWidth="100" Margin="10,0,10,0" ItemsSource="{Binding}" >
+        </ComboBox>
 
 
-        <Button x:Name="criarCliente" Content="Adicionar Disco" Grid.Column="4" Grid.Row="7" Width="150" Height="50"/>
+
+        <Button x:Name="criarCliente" Content="Adicionar Disco" Grid.Column="4" Grid.Row="7" Width="150" Height="50" Margin="10,0,10,0"/>
 
     </Grid>
 </Page>
