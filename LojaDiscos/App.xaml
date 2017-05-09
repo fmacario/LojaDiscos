@@ -29,6 +29,10 @@
             <Setter Property="Foreground" Value="#00bf8c"/>
         </Style>
 
+        <Style x:Key="comboBox" TargetType="ComboBox">
+            <Setter Property="Background" Value="#00bf8c"/>
+        </Style>
+
     </Application.Resources>
 
 </Application>
