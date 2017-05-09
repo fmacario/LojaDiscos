@@ -13,7 +13,20 @@
         </Style>
         <Style x:Key="MyWindowStyle">
             <Setter Property="Control.Background" Value="#FF2D2D30"/>
-            <Setter Property="Window.Title" Value="Styled Window"/>
+        </Style>
+        <Style x:Key="botoes" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#00bf8c"/>
+        </Style>
+        <Style x:Key="textBlock" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#00bf8c"/>
+        </Style>
+
+        <Style x:Key="textBox" TargetType="TextBox">
+            <Setter Property="Background" Value="#00bf8c"/>
+        </Style>
+
+        <Style x:Key="radioButton" TargetType="RadioButton">
+            <Setter Property="Foreground" Value="#00bf8c"/>
         </Style>
 
     </Application.Resources>

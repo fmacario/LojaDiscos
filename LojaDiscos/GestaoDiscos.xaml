@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:LojaDiscos"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      WindowTitle="Gestão de Discos">
+      WindowTitle="Gestão de Discos"
+      Style="{StaticResource MyWindowStyle}">
 
     <Grid>
         
