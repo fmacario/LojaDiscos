@@ -6,10 +6,7 @@
       xmlns:local="clr-namespace:LojaDiscos"
       mc:Ignorable="d" 
       WindowTitle="Novo Disco" d:DesignWidth="647" d:DesignHeight="333">
-    <Page.Resources>
-        <local:lojadiscosDataSet x:Key="lojadiscosDataSet"/>
-        <CollectionViewSource x:Key="generoViewSource" Source="{Binding Genero, Source={StaticResource lojadiscosDataSet}}"/>
-    </Page.Resources>
+
 
     <Grid Margin="0,0,-40,-32">
         <Grid.ColumnDefinitions>
@@ -29,6 +26,9 @@
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+
         </Grid.RowDefinitions>
 
         <TextBlock x:Name="codigo" Text="Código" FontSize="20" Grid.Column="1" Grid.Row="1"/>
@@ -49,8 +49,13 @@
         <TextBlock x:Name="tipo" Text="Tipo" FontSize="20" Grid.Column="1" Grid.Row="6"/>
         <ComboBox Text="Escolher Tipo" Name="TipoCB" Height="30" Grid.Row="6" VerticalAlignment="Top" Grid.Column="2" Margin="50,0,10,0" ItemsSource="{Binding}" >
         </ComboBox>
+        <TextBlock x:Name="preço" Text="Preço" FontSize="20" Grid.Column="1" Grid.Row="7"/>
+        <TextBox x:Name="preço1" FontSize="17" Grid.Row="7" Height="30" VerticalAlignment="Top" Grid.Column="2" Margin="50,0,10,0" MaxLength="4"/>
+        <TextBlock x:Name="unidades" Text="Unidades" FontSize="20" Grid.Column="1" Grid.Row="8"/>
+        <TextBox x:Name="unidades2" FontSize="17" Grid.Row="8" Height="30" VerticalAlignment="Top" Grid.Column="2" Margin="50,0,10,0" MaxLength="4"/>
 
-        <Button x:Name="adicionarDisco" Content="Adicionar Disco" Grid.Column="4" Grid.Row="6" Width="150" Height="50" Margin="45,10,41,32" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+
+        <Button x:Name="adicionarDisco" Content="Adicionar Disco" Grid.Column="4" Grid.Row="8" Width="150" Height="50" Margin="45,10,41,32" Grid.ColumnSpan="2" Grid.RowSpan="2" Click="adicionarDisco_Click"/>
 
 
         <Image Margin="0,0,0,0" Name="imgPhoto" 
@@ -58,7 +63,9 @@
 
         <Button Height="24" HorizontalAlignment="Left" 
         Margin="83,0,0,22" Name="btnLoad" VerticalAlignment="Bottom" 
-        Width="75" Grid.Column="3" Click="btnLoad_Click" Grid.Row="6" Grid.ColumnSpan="2">_Adicionar Capa</Button>
+        Width="95" Grid.Column="4" Click="btnLoad_Click" Grid.Row="7" Grid.ColumnSpan="5">_Adicionar Capa</Button>
+
+        <Label x:Name="euro" Content="€" Grid.Column="3" HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Top" Height="30" Width="26"/>
 
 
 
