@@ -23,6 +23,17 @@ namespace LojaDiscos
         public GestaoDiscos()
         {
             InitializeComponent();
+            carregarCds();
+        }
+
+
+        public void carregarCds()
+        {
+            for (int i = 0; i < length; i++)
+            {
+
+            }
+            this.wrapPanelDiscos
         }
     }
 }

@@ -9,7 +9,7 @@
       Style="{StaticResource MyWindowStyle}">
 
 
-    <Grid Margin="0,0,-40,-32">
+    <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition MaxWidth="200"/>
             <ColumnDefinition Width="auto"/>
@@ -51,7 +51,7 @@
         <ComboBox Style="{StaticResource comboBox}" Text="Escolher Tipo" Name="TipoCB" Height="30" Grid.Row="6" VerticalAlignment="Top" Grid.Column="2" Margin="50,0,10,0" ItemsSource="{Binding}" >
         </ComboBox>
         <TextBlock Style="{StaticResource textBlock}" x:Name="preço" Text="Preço" FontSize="20" Grid.Column="1" Grid.Row="7"/>
-        <TextBox Style="{StaticResource textBox}" x:Name="preço1" FontSize="17" Grid.Row="7" Height="30" VerticalAlignment="Top" Grid.Column="2" Margin="50,0,10,0" MaxLength="4"/>
+        <TextBox Style="{StaticResource textBox}" x:Name="preço1" FontSize="17" Grid.Row="7" Height="30" VerticalAlignment="Top" Grid.Column="2" Margin="50,0,10,0" MaxLength="5"/>
         <TextBlock Style="{StaticResource textBlock}" x:Name="unidades" Text="Unidades" FontSize="20" Grid.Column="1" Grid.Row="8"/>
         <TextBox Style="{StaticResource textBox}" x:Name="unidades2" FontSize="17" Grid.Row="8" Height="30" VerticalAlignment="Top" Grid.Column="2" Margin="50,0,10,0" MaxLength="4"/>
 

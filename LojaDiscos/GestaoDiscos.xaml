@@ -10,6 +10,40 @@
       Style="{StaticResource MyWindowStyle}">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+
+        <WrapPanel Name="wrapPanelDiscos" Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <StackPanel Orientation="Vertical">
+                <Image Source="Images\icon.png" Width="50" Height="50"></Image>
+                <TextBlock>Nome: </TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <Image Source="C:\Imagens_Discos_IHC\noimage.png" Width="50" Height="50"></Image>
+                <TextBlock>Nome:</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <Image Source="C:\Imagens_Discos_IHC\noimage.png" Width="50" Height="50"></Image>
+                <TextBlock>Nome:</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <Image Source="C:\Imagens_Discos_IHC\noimage.png" Width="50" Height="50"></Image>
+                <TextBlock>Nome:</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <Image Source="C:\Imagens_Discos_IHC\noimage.png" Width="50" Height="50"></Image>
+                <TextBlock>Nome:</TextBlock>
+            </StackPanel>
+
+        </WrapPanel>
     </Grid>
 </Page>
