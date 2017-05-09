@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static LojaDiscos.MainWindow;
 
 namespace LojaDiscos
 {
@@ -23,15 +26,59 @@ namespace LojaDiscos
         public GerirClientes()
         {
             InitializeComponent();
+            List();
         }
 
+        private void List()
+        {
+
+            //SqlConnection con = ConnectionHelper.GetConnection();
+
+            using (SqlConnection sc = ConnectionHelper.GetConnection())
+            {
+                sc.Open();
+                string sql = "Select * FROM Pessoa As P JOIN Cliente As C ON P.nif = C.nif";
+                SqlCommand com = new SqlCommand(sql, sc);
+            
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dataGrid.ItemsSource = dt.DefaultView;
+                }
+
+
+
+            }
+        }
+        private void ListSearch() {
+
+            //SqlConnection con = ConnectionHelper.GetConnection();
+
+            using (SqlConnection sc = ConnectionHelper.GetConnection())
+            {
+                sc.Open();
+                string sql = "Select * FROM Pessoa As P JOIN Cliente As C ON P.nif = C.nif WHERE [nif]= @nif";
+                SqlCommand com = new SqlCommand(sql, sc);
+                com.Parameters.AddWithValue("@nif", nif_pesq.Text);
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dataGrid.ItemsSource = dt.DefaultView;
+                }
+
+            }
+        }
         private void criarFichaCliente_Click(object sender, RoutedEventArgs e)
         {
             CriarFichaCliente criarFichaCliente = new CriarFichaCliente();
             this.NavigationService.Navigate(criarFichaCliente);
         }
 
-        private void listView_SizeChanged(object sender, SizeChangedEventArgs e)
+       /* private void listView_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             ListView listView = sender as ListView;
             GridView gView = listView.View as GridView;
@@ -50,6 +97,11 @@ namespace LojaDiscos
             gView.Columns[3].Width = workingWidth * col4;
             gView.Columns[4].Width = workingWidth * col5;
             gView.Columns[5].Width = workingWidth * col6;
+        }*/
+
+        private void pesquisar_Click(object sender, RoutedEventArgs e)
+        {
+            ListSearch();
         }
     }
 }
