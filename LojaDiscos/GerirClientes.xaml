@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LojaDiscos"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="302" d:DesignWidth="603"
       WindowTitle="Gestão de Clientes"
       Style="{StaticResource MyWindowStyle}">
 
@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
 
-            <RowDefinition />
+            <RowDefinition Height="auto"/>
 
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -27,16 +27,20 @@
 
         </Grid.RowDefinitions>
 
-        <Button Style="{StaticResource botoes}" x:Name="pesquisar" Content="Pesquisar" Grid.Row="0" Grid.Column="3" Margin="0,22,0,200" Click="pesquisar_Click"/>
-        <TextBox x:Name="nif_pesq" Text="NIF cliente" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="23" Margin="20,22,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="155"/>
-
-        
-       
-
+        <Button Style="{StaticResource botoes}" x:Name="pesquisar" Content="Pesquisar" Grid.Row="0" Grid.Column="3" Height="30" Click="pesquisar_Click"/>
+        <TextBox Style="{StaticResource textBox}" x:Name="nif_pesq" Text="NIF cliente" Grid.ColumnSpan="2" Height="23" Margin="20,22,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="155"/>
 
         <Button Style="{StaticResource botoes}" x:Name="criarFichaCliente" Content="Novo Cliente" Grid.Row="2" Grid.Column="2" Margin="0,0,0,10" MinWidth="100" MinHeight="45" Click="criarFichaCliente_Click"/>
-        
-        <DataGrid x:Name="dataGrid" ItemsSource="{Binding}" Grid.ColumnSpan="5" Width="auto" Margin="20,50,20,50" MinHeight="500"  ScrollViewer.VerticalScrollBarVisibility="Visible" />
+
+        <DataGrid Style="{StaticResource dataGrid}" x:Name="dataGrid" IsReadOnly="True" ItemsSource="{Binding}" Grid.ColumnSpan="5" Grid.Row="1" Margin="20,50,20,50" MinHeight="300" Height="auto" ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" SizeChanged="dataGrid_SizeChanged">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#00bf8c" />
+                    <Setter Property="FontSize" Value="15" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
 
     </Grid>
 </Page>

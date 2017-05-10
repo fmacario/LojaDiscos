@@ -24,54 +24,9 @@
         </Grid.RowDefinitions>
 
         <TextBlock Style="{StaticResource textBlock}" FontSize="30" x:Name="clienteNome" Text="Cliente: " VerticalAlignment="Center" Grid.Column="1"/>
+        <TextBox Style="{StaticResource textBox}" x:Name="cliente" VerticalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="2" Height="30" FontSize="20"/>
 
-
-        <ListView x:Name="listView" Grid.ColumnSpan="5" Width="auto" Margin="20,0,20,0" Height="auto" MinHeight="300" Grid.Row="1" SizeChanged="listView_SizeChanged" ScrollViewer.VerticalScrollBarVisibility="Visible">
-            <ListView.View>
-                <GridView>
-                    <GridView.ColumnHeaderContainerStyle>
-                        <Style>
-                            <Setter Property="TextElement.FontSize" Value="17" />
-                        </Style>
-                    </GridView.ColumnHeaderContainerStyle>
-                    <GridViewColumn Header="Código" Width="auto">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Designação" Width="auto" >
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Quantidade" Width="auto">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Preço Unit." Width="auto">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Preço Total" Width="auto">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+         <DataGrid x:Name="dataGrid" ItemsSource="{Binding}" Grid.ColumnSpan="5" Grid.Row="1" Width="auto" Margin="20,50,20,50" MinHeight="300" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SizeChanged="dataGrid_SizeChanged" />
 
         <RadioButton Style="{StaticResource radioButton}" x:Name="numerario" Content="Numerário" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"/>
         <RadioButton Style="{StaticResource radioButton}" x:Name="cartao" Content="Cartão" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center"/>

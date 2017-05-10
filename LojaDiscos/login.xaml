@@ -4,8 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LojaDiscos"
-        WindowTitle="Login" >
-    <!--Style="{StaticResource MyWindowStyle}"> -->
+      WindowTitle="Login" 
+      Style="{StaticResource MyWindowStyle}">
     
     <Grid>
         <Grid.ColumnDefinitions>
@@ -24,13 +24,13 @@
             <RowDefinition />
             
         </Grid.RowDefinitions>
-        <Button x:Name="button" Background="WhiteSmoke" Content="Validar" Grid.Row="5" Grid.Column="1" Width="250" Height="29" Click="button_Click" />
-        <TextBox x:Name="textBox" Height="23" TextWrapping="Wrap" Text="TextBox" Grid.Column="1" Grid.Row="3" Width="171" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox x:Name="textBox_Copy" Height="23" TextWrapping="Wrap" Text="TextBox" Grid.Column="1" Grid.Row="4" Width="171" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label x:Name="label_Copy" Content="Username" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <Label x:Name="label" Content="Password" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Button Style="{StaticResource botoes}" x:Name="button" Content="Validar" Grid.Row="5" Grid.Column="1" Width="250" Height="29" Click="button_Click"/>
+        <TextBox Style="{StaticResource textBox}" x:Name="textBox" Height="23" TextWrapping="Wrap" Grid.Column="1" Grid.Row="3" Width="171" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Margin="50,0,0,0"/>
+        <PasswordBox Style="{StaticResource pw}" x:Name="textBox_Copy" Height="23" Grid.Column="1" Grid.Row="4" Width="171" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Margin="50,0,0,0"/>
+        <Label Style="{StaticResource label}" x:Name="label_Copy" Content="Username" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20"/>
+        <Label Style="{StaticResource label}" x:Name="label" Content="Password" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20"/>
         <!--<Rectangle Fill="Silver" Height="31" Stroke="Black" Width="250" Grid.Column="1" Grid.Row="1"/>-->
-        <Label x:Name="label1" Content="Autenticação" Grid.Column="1" Grid.Row="1"/>
+        <Label Style="{StaticResource label}" FontSize="25" BorderBrush="#00bf8c" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="2" x:Name="label1" Content="Autenticação" Grid.Column="1" Grid.Row="2"/>
         
     </Grid>
 

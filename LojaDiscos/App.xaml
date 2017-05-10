@@ -5,7 +5,6 @@
             StartupUri="MainWindow.xaml">
 
     <Application.Resources>
-
         <Style x:Key="botoesMenu" TargetType="{x:Type Button}">
             <Setter Property="Width" Value="100" />
             <Setter Property="Height" Value="50" />
@@ -33,6 +32,19 @@
             <Setter Property="Background" Value="#00bf8c"/>
         </Style>
 
+        <Style x:Key="label" TargetType="Label">
+            <Setter Property="Foreground" Value="#00bf8c"/>
+        </Style>
+
+        <Style x:Key="pw" TargetType="PasswordBox">
+            <Setter Property="Background" Value="#00bf8c"/>
+        </Style>
+
+        <Style x:Key="dataGrid" TargetType="DataGrid">
+            <Setter Property="HorizontalGridLinesBrush" Value="#00bf8c"/>
+            <Setter Property="VerticalGridLinesBrush" Value="#00bf8c"/>
+        </Style>
+        
     </Application.Resources>
 
 </Application>

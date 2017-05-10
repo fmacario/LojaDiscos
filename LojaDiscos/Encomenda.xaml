@@ -6,9 +6,30 @@
       xmlns:local="clr-namespace:LojaDiscos"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      WindowTitle="Encomenda">
+      WindowTitle="Encomenda"
+      Style="{StaticResource MyWindowStyle}">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Style="{StaticResource textBlock}" FontSize="30" x:Name="clienteNome" Text="Cliente: " VerticalAlignment="Center" Grid.Column="1"/>
+        <TextBox Style="{StaticResource textBox}" x:Name="cliente" VerticalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="2" Height="30" FontSize="20"/>
+
         
+
+        <TextBlock Style="{StaticResource textBlock}" x:Name="total" Text="Total: " Grid.Column="2" Grid.Row="3" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <Button Style="{StaticResource botoes}" x:Name="encomendar" Content="Concluir Encomenda" Grid.Column="4" Grid.Row="3" Margin="0,0,10,10" VerticalAlignment="Center" MinWidth="100" MinHeight="55"/>
     </Grid>
 </Page>

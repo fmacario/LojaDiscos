@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data;
+using System.Data.SqlClient;
+using static LojaDiscos.MainWindow;
 
 namespace LojaDiscos
 {
@@ -40,12 +43,34 @@ namespace LojaDiscos
                 TextBlock text = new TextBlock();
                 text.Text = "TEste " + i + " !";
 
-                sp.Children.Add(Img);
-                sp.Children.Add(text);
+                //sp.Children.Add(Img);
+                //sp.Children.Add(text);
 
-                this.wrapPanelDiscos.Children.Add(sp);
+                //this.wrapPanelDiscos.Children.Add(sp);
             }
-            
+
+            using (SqlConnection sc = ConnectionHelper.GetConnection())
+            {
+                sc.Open();
+                int a = 11111;
+                string sql = "Select titulo FROM Discos where "+a+" = id_disco";
+                SqlCommand com = new SqlCommand(sql, sc);
+
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    //dataGrid.ItemsSource = dt.DefaultView;
+                    TextBlock text = new TextBlock();
+                    text.Text = dt.DefaultView.ToString();
+                    this.wrapPanelDiscos.Children.Add(text);
+                }
+
+
+
+            }
+
         }
 
 
