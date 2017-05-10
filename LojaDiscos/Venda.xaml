@@ -26,8 +26,10 @@
         <TextBlock Style="{StaticResource textBlock}" FontSize="30" x:Name="clienteNome" Text="Cliente: " VerticalAlignment="Center" Grid.Column="1"/>
         <TextBox Style="{StaticResource textBox}" x:Name="cliente" VerticalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="2" Height="30" FontSize="20"/>
 
-         <DataGrid x:Name="dataGrid" ItemsSource="{Binding}" Grid.ColumnSpan="5" Grid.Row="1" Width="auto" Margin="20,50,20,50" MinHeight="300" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SizeChanged="dataGrid_SizeChanged" />
+        <ListView x:Name="listView" Grid.ColumnSpan="5" Width="auto" Margin="20,0,20,0" Height="auto" MinHeight="300" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Visible">
 
+        </ListView>
+        <!--<DataGrid x:Name="dataGrid" ItemsSource="{Binding}" Grid.ColumnSpan="5" Grid.Row="1" Width="auto" Margin="20,50,20,50" MinHeight="300" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SizeChanged="dataGrid_SizeChanged" />-->
         <RadioButton Style="{StaticResource radioButton}" x:Name="numerario" Content="Numerário" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"/>
         <RadioButton Style="{StaticResource radioButton}" x:Name="cartao" Content="Cartão" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center"/>
         <RadioButton Style="{StaticResource radioButton}" x:Name="cheque" Content="Cheque" Grid.Column="3" Grid.Row="2" VerticalAlignment="Center"/>
