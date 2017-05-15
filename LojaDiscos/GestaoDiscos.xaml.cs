@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
 using static LojaDiscos.MainWindow;
+using System.IO;
 
 namespace LojaDiscos
 {
@@ -26,7 +27,7 @@ namespace LojaDiscos
         public GestaoDiscos()
         {
             InitializeComponent();
-            carregarCds();
+            //carregarCds();
         }
 
 
@@ -38,7 +39,7 @@ namespace LojaDiscos
                 sp.Orientation = Orientation.Vertical;
 
                 Image Img = new Image();
-                Img.Source = new BitmapImage(new Uri("C:/Users/Filipe/Desktop/UA/3ano/ihc/projeto/LojaDiscos/LojaDiscos/Images/icon.png"));
+                //Img.Source = new BitmapImage(new Uri("C:/Users/Filipe/Desktop/UA/3ano/ihc/projeto/LojaDiscos/LojaDiscos/Images/icon.png"));
                 //Image resizedImage = new Bitmap(image, new Size(50, 50));
                 TextBlock text = new TextBlock();
                 text.Text = "TEste " + i + " !";
@@ -64,7 +65,7 @@ namespace LojaDiscos
                     //dataGrid.ItemsSource = dt.DefaultView;
                     TextBlock text = new TextBlock();
                     text.Text = dt.DefaultView.ToString();
-                    this.wrapPanelDiscos.Children.Add(text);
+                    //this.wrapPanelDiscos.Children.Add(text);
                 }
 
 
@@ -73,7 +74,75 @@ namespace LojaDiscos
 
         }
 
+        private void pesquisar_Click(object sender, RoutedEventArgs e)
+        {
+            pesquisarCD();
+        }
 
+        private void pesquisarCD()
+        {
+
+            //pesquisa por codigo disco
+            if (comboBox.Text == "Código")
+            {
+                SqlConnection conn = ConnectionHelper.GetConnection();
+
+                using (SqlCommand cmd = new SqlCommand("pesquisaDiscos", conn))
+                {
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@pesquisa", disco_pesq.Text);
+
+                    cmd.Parameters.Add("@preço", SqlDbType.Money);
+                    cmd.Parameters["@preço"].Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@titulo", SqlDbType.VarChar, 30);
+                    cmd.Parameters["@titulo"].Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@Ano", SqlDbType.Int);
+                    cmd.Parameters["@Ano"].Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@artista", SqlDbType.VarChar, 30);
+                    cmd.Parameters["@artista"].Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@genero", SqlDbType.VarChar, 30);
+                    cmd.Parameters["@genero"].Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@stock", SqlDbType.Int);
+                    cmd.Parameters["@stock"].Direction = ParameterDirection.Output;
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+
+                    artista.Content = cmd.Parameters["@artista"].Value.ToString();
+                    titulo.Content = cmd.Parameters["@titulo"].Value.ToString();
+                    ano.Content = cmd.Parameters["@ano"].Value.ToString();
+                    genero.Content = cmd.Parameters["@genero"].Value.ToString();
+                    preço.Content = cmd.Parameters["@preço"].Value.ToString() + "€";
+                    stock.Content = cmd.Parameters["@stock"].Value.ToString();
+
+
+                }
+                //IMAGEM DISCO
+
+                conn.Open();
+                string myquery = ("SELECT imagemDisco, id_disco FROM Discos WHERE id_disco= '" + disco_pesq.Text + "';");
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(new SqlCommand(myquery, conn));
+                DataSet dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                if (dataSet.Tables[0].Rows.Count == 1)
+                {
+                    Byte[] data = new Byte[0];
+                    data = (Byte[])(dataSet.Tables[0].Rows[0]["imagemDisco"]);
+                    MemoryStream mem = new MemoryStream(data);
+                    var imageSource = new BitmapImage();
+                    imageSource.BeginInit();
+                    imageSource.StreamSource = mem;
+                    imageSource.EndInit();
+
+                    image.Source = imageSource;
+
+
+                }
+            }
+        }
     }
 
 }

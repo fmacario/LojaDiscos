@@ -31,10 +31,11 @@
         <Button Style="{StaticResource botoesMenu}" x:Name="encomendaFornecedor" Content="Encomenda" Grid.Row="2" Grid.Column="2" Click="encomendaFornecedor_Click"/>
         <Button Style="{StaticResource botoesMenu}" x:Name="validarFornecedor" Content="Validar Encomenda" Grid.Row="3" Grid.Column="2" Click="validarFornecedor_Click"/>
         <Button Style="{StaticResource botoesMenu}" x:Name="gerirFornecedor" Content="Gerir Fornecedores" Grid.Row="4" Grid.Column="2" Click="gerirFornecedor_Click" />
-        <Label x:Name="clientes" Content="Clientes" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontWeight="Bold" TextBlock.FontSize="20" TextBlock.FontFamily="Century Gothic"  Grid.Row="1"/>
-        <Label x:Name="loja" Content="Loja" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontWeight="Bold" TextBlock.FontSize="20" TextBlock.FontFamily="Century Gothic"  Grid.Row="1"/>
-        <Label x:Name="fornecedores" Content="Fornecedores" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontWeight="Bold" TextBlock.FontSize="20" TextBlock.FontFamily="Century Gothic" Grid.Row="1"/>
+        <Label x:Name="clientes" Content="Clientes" Grid.Column="0" TextBlock.Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontWeight="Bold" TextBlock.FontSize="20" TextBlock.FontFamily="Century Gothic"  Grid.Row="1"/>
+        <Label x:Name="loja" Content="Loja" Grid.Column="1" TextBlock.Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontWeight="Bold" TextBlock.FontSize="20" TextBlock.FontFamily="Century Gothic"  Grid.Row="1"/>
+        <Label x:Name="fornecedores" Content="Fornecedores" TextBlock.Foreground="White" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontWeight="Bold" TextBlock.FontSize="20" TextBlock.FontFamily="Century Gothic" Grid.Row="1"/>
         <Button Style="{StaticResource botoesMenu}" x:Name="adicionaDisco" Content="Adicionar Disco" Grid.Row="3" Grid.Column="1" Click="adicionaDisco_Click" />
+       
 
 
     </Grid>

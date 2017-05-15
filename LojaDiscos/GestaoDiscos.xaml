@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LojaDiscos"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="302" d:DesignWidth="603"
       WindowTitle="Gestão de Discos"
       Style="{StaticResource MyWindowStyle}">
 
@@ -14,16 +14,46 @@
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
 
 
-        <WrapPanel Name="wrapPanelDiscos" Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Visible">
-            
-        </WrapPanel>
+
+        <Button Style="{StaticResource botoes}" x:Name="pesquisarDisco" Content="Pesquisar" Grid.Row="0" Grid.Column="3" Height="30" Click="pesquisar_Click" Margin="37,31,84,59" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <TextBox Style="{StaticResource textBox}" x:Name="disco_pesq" Text="Pesquisar disco" Grid.Row="0" Grid.ColumnSpan="2" Height="23" Margin="31,37,5,0" TextWrapping="Wrap"  VerticalAlignment="Top" Grid.Column="1"/>
+        <ComboBox x:Name="comboBox" Text="Pesquisa por" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="32,37,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content="Código" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Artista" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Ano" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Genero" HorizontalAlignment="Left" Width="118"/>
+        </ComboBox>
+        <ComboBox x:Name="comboBox1" Text="Ordem" Grid.Column="1" HorizontalAlignment="Left" Margin="31,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="89" Height="19">
+            <ComboBoxItem Content="Alfabética" HorizontalAlignment="Left" Width="92"/>
+            <ComboBoxItem Content="Preço mais caro" HorizontalAlignment="Left" Width="92"/>
+            <ComboBoxItem Content="Preço mais barato" HorizontalAlignment="Left" Width="92"/>
+        </ComboBox>
+        <ComboBox x:Name="comboBox1_Copy" Text="Tipo CD" Grid.Column="2" HorizontalAlignment="Left" Margin="10,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="89" Height="19">
+            <ComboBoxItem Content="CD" HorizontalAlignment="Left" Width="92"/>
+            <ComboBoxItem Content="Vinil" HorizontalAlignment="Left" Width="92"/>
+            <ComboBoxItem Content="DVD" HorizontalAlignment="Left" Width="92"/>
+            <ComboBoxItem Content="Blu-ray" HorizontalAlignment="Left" Width="92"/>
+        </ComboBox>
+        <Image x:Name="image"  HorizontalAlignment="Left" Height="121" Grid.Row="2" Grid.RowSpan="2" VerticalAlignment="Top" Width="111" Grid.Column="4"/>
+        <Label x:Name="artista" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="1.833,-3.577"/>
+        <Label x:Name="titulo" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="10,36,0,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="1.833,-3.577" Grid.RowSpan="2"/>
+        <Label x:Name="genero" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="10,6,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="1.833,-3.577"/>
+        <Label x:Name="ano" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="10,37,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="1.833,-3.577" Grid.RowSpan="2"/>
+        <Label x:Name="stock" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="10,3,0,0" Grid.Row="4" VerticalAlignment="Top" RenderTransformOrigin="1.833,-3.577"/>
+        <Label x:Name="preço" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="10,25,0,0" Grid.Row="4" VerticalAlignment="Top" RenderTransformOrigin="1.833,-3.577"/>
+
+
     </Grid>
 </Page>
