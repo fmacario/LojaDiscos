@@ -24,12 +24,23 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <TextBlock Style="{StaticResource textBlock}" FontSize="30" x:Name="clienteNome" Text="Cliente: " VerticalAlignment="Center" Grid.Column="1"/>
-        <TextBox Style="{StaticResource textBox}" x:Name="cliente" VerticalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="2" Height="30" FontSize="20"/>
+        <TextBlock Style="{StaticResource textBlock}" FontSize="30" x:Name="fornecedorNome" Text="Fornecedor: " VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="0"/>
+        <TextBox Style="{StaticResource textBox}" x:Name="fornecedor" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Height="30" FontSize="20" Margin="0,0,20,0"/>
+        <Button Style="{StaticResource botoes}" x:Name="pesquisa" Content="Pesquisa" Grid.Column="3" Grid.Row="0" Margin="0,10,0,0"/>
+
+        <DataGrid Style="{StaticResource dataGrid}" x:Name="dataGridEncomenda" IsReadOnly="True" ItemsSource="{Binding}" Grid.ColumnSpan="5" Grid.Row="1" Margin="20,50,20,50" MinHeight="300" Height="auto" ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#00bf8c" />
+                    <Setter Property="FontSize" Value="15" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
+        <!--<DataGrid x:Name="dataGrid" ItemsSource="{Binding}" Grid.ColumnSpan="5" Grid.Row="1" Width="auto" Margin="20,50,20,50" MinHeight="300" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SizeChanged="dataGrid_SizeChanged" />-->
+
+          <Button Style="{StaticResource botoes}" x:Name="concluirEncomenda" Content="Concluir" Grid.Column="4" Grid.Row="3" Margin="0,0,10,10" VerticalAlignment="Center" MinWidth="100" MinHeight="55"/>
 
         
-
-        <TextBlock Style="{StaticResource textBlock}" x:Name="total" Text="Total: " Grid.Column="2" Grid.Row="3" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-        <Button Style="{StaticResource botoes}" x:Name="encomendar" Content="Concluir Encomenda" Grid.Column="4" Grid.Row="3" Margin="0,0,10,10" VerticalAlignment="Center" MinWidth="100" MinHeight="55"/>
     </Grid>
 </Page>
