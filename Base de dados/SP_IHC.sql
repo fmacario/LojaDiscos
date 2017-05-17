@@ -1,4 +1,6 @@
 
+
+
 Create procedure registrarVenda
 	@data_venda	date,
 	@nif_funcionario int,
@@ -85,7 +87,7 @@ select @nome=nome
 from Pessoa As P JOIN Cliente As C ON P.nif = C.nif 
 where C.nif = @pesquisa
 
--- Pesquisar por Disco
+-- Pesquisar por Disco Código
 Go
 Create procedure pesquisaDiscos
 @pesquisa int,
@@ -100,6 +102,21 @@ select @preço=preço, @titulo=titulo,@ano=ano, @artista=A.artista, @genero=G.ge
 from Discos As D JOIN Artistas AS A ON D.id_artista=A.id_artista JOIN Genero As G ON D.id_genero=G.id_genero
 where id_disco = @pesquisa
 
+
+-- Pesquisar por Disco ANO
+
+Create procedure pesquisaDiscosAno
+@pesquisa int,
+@preço money OUTPUT,
+@titulo varchar(30) OUTPUT,
+@ano int OUTPUT,
+@artista varchar(30) OUTPUT,
+@genero varchar(30) OUTPUT,
+@stock int OUTPUT
+as
+select @preço=preço, @titulo=titulo,@ano=ano, @artista=A.artista, @genero=G.genero, @stock=D.stock
+from Discos As D JOIN Artistas AS A ON D.id_artista=A.id_artista JOIN Genero As G ON D.id_genero=G.id_genero
+where ano = @pesquisa
 
 -- inserir Artista
 GO
