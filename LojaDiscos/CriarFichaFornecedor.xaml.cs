@@ -32,7 +32,7 @@ namespace LojaDiscos
         {
             SqlConnection conn = ConnectionHelper.GetConnection();
 
-            using (SqlCommand cmd = new SqlCommand("InserirCliente", conn))
+            using (SqlCommand cmd = new SqlCommand("InserirFornecedor", conn))
             {
 
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -45,6 +45,8 @@ namespace LojaDiscos
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 MessageBox.Show("Fornecedor adicionado com sucesso", "Sucesso!");
+                Menu menu = new Menu();
+                this.NavigationService.Navigate(menu);
             }
 
         }
