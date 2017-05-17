@@ -23,8 +23,16 @@ namespace LojaDiscos
     /// </summary>
     public partial class CriarFichaCliente : Page
     {
+        private string s = "";
+
         public CriarFichaCliente()
         {
+            InitializeComponent();
+        }
+
+        public CriarFichaCliente(string str)
+        {
+            this.s = str;
             InitializeComponent();
         }
 
@@ -45,6 +53,17 @@ namespace LojaDiscos
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 MessageBox.Show("Cliente adicionado com sucesso", "Sucesso!");
+
+                if (s == "venda")
+                {
+                    Venda v = new Venda(nif2.Text);
+                    this.NavigationService.Navigate(v);
+                }
+                else
+                {
+                    Menu menu = new Menu();
+                    this.NavigationService.Navigate(menu);
+                }
             }
 
         }

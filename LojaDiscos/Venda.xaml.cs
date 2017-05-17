@@ -24,10 +24,20 @@ namespace LojaDiscos
     {
         Int32 nif_cliente = 0;
         int quantidade;
+        string nif = "0";
+
         public Venda()
         {
             InitializeComponent();
             quantidade = 0;
+        }
+
+        public Venda(string nif)
+        {
+            this.nif = nif;
+            InitializeComponent();
+            quantidade = 0;
+            getCliente();
         }
 
         /*private void dataGrid_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -61,10 +71,21 @@ namespace LojaDiscos
             using (SqlCommand cmd = new SqlCommand("pesquisaClienteVenda", conn))
             {
 
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@pesquisa", cliente.Text);
+                
 
-                nif_cliente = Int32.Parse(cmd.Parameters["@pesquisa"].Value.ToString());
+                if (nif.Equals("0"))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@pesquisa", cliente.Text);
+                    nif_cliente = Int32.Parse(cmd.Parameters["@pesquisa"].Value.ToString());
+                }
+                else {
+                    nif_cliente = Int32.Parse(nif);
+                    cliente.Text = nif;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@pesquisa", cliente.Text);
+                }
+
 
                 cmd.Parameters.Add("@nome", SqlDbType.VarChar, 50);
                 cmd.Parameters["@nome"].Direction = ParameterDirection.Output;
@@ -76,9 +97,9 @@ namespace LojaDiscos
                 {
                     cliente.Text = cmd.Parameters["@nome"].Value.ToString();
                 }
-                else
+                /*else
                 {
-                    if (MessageBox.Show("Deseja adicionar novo cliente?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                    if (MessageBox.Show("NIF não encontrado. Deseja adicionar novo cliente?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                     {
                         //do no stuff
                         Venda contin = new Venda();
@@ -92,13 +113,18 @@ namespace LojaDiscos
                         this.NavigationService.Navigate(newcliente);
                     }
 
-                }
+                }*/
             }
         }
         private void pesquisa_Click(object sender, RoutedEventArgs e)
         {
-
             getCliente();
+        }
+
+        private void addCliente_Click(object sender, RoutedEventArgs e)
+        {
+            CriarFichaCliente newcliente = new CriarFichaCliente("venda");
+            this.NavigationService.Navigate(newcliente);
         }
 
         private void concluirVenda_Click(object sender, RoutedEventArgs e)
