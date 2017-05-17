@@ -29,18 +29,21 @@
 
         <Button Style="{StaticResource botoes}" x:Name="pesquisarDisco" Content="Pesquisar" Grid.Row="0" Grid.Column="3" Height="30" Click="pesquisar_Click" Margin="37,31,84,59" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
         <TextBox Style="{StaticResource textBox}" x:Name="disco_pesq" Text="Pesquisar disco" Grid.Row="0" Grid.ColumnSpan="2" Height="23" Margin="31,37,5,0" TextWrapping="Wrap"  VerticalAlignment="Top" Grid.Column="1"/>
-        <ComboBox x:Name="comboBox" Text="Pesquisa por" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="32,37,0,0" VerticalAlignment="Top" Width="120">
+        <ComboBox x:Name="comboBox" SelectedIndex="0" Text="Pesquisa por" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="32,37,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Visibility="Collapsed">Pesquisar por</ComboBoxItem>
             <ComboBoxItem Content="Código" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="Artista" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="Ano" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="Genero" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
-        <ComboBox x:Name="comboBox1" Text="Ordem" Grid.Column="1" HorizontalAlignment="Left" Margin="31,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="89" Height="19">
-            <ComboBoxItem Content="Alfabética" HorizontalAlignment="Left" Width="92"/>
-            <ComboBoxItem Content="Preço mais caro" HorizontalAlignment="Left" Width="92"/>
-            <ComboBoxItem Content="Preço mais barato" HorizontalAlignment="Left" Width="92"/>
+        <ComboBox x:Name="comboBox1" SelectedIndex="0" Text="Ordem" Grid.Column="1" HorizontalAlignment="Left" Margin="31,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="89" Height="19">
+            <ComboBoxItem Visibility="Collapsed">Ordenar por</ComboBoxItem>
+            <ComboBoxItem Content="Nome" HorizontalAlignment="Left" Width="92"/>
+            <ComboBoxItem Content="Preço mais alto" HorizontalAlignment="Left" Width="92"/>
+            <ComboBoxItem Content="Preço mais baixo" HorizontalAlignment="Left" Width="92"/>
         </ComboBox>
-        <ComboBox x:Name="comboBox1_Copy" Text="Tipo CD" Grid.Column="2" HorizontalAlignment="Left" Margin="10,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="89" Height="19">
+        <ComboBox x:Name="comboBox1_Copy" SelectedIndex="0" Text="Tipo CD" Grid.Column="2" HorizontalAlignment="Left" Margin="10,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="89" Height="19">
+            <ComboBoxItem Visibility="Collapsed">Tipo CD</ComboBoxItem>
             <ComboBoxItem Content="CD" HorizontalAlignment="Left" Width="92"/>
             <ComboBoxItem Content="Vinil" HorizontalAlignment="Left" Width="92"/>
             <ComboBoxItem Content="DVD" HorizontalAlignment="Left" Width="92"/>

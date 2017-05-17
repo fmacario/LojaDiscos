@@ -268,6 +268,8 @@ namespace LojaDiscos
                 this.wrapPanelDiscos.Children.Add(wpd);
             }
         }
+
+        
     }
 
 }

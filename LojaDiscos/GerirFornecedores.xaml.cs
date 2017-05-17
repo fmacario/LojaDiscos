@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static LojaDiscos.MainWindow;
 
 namespace LojaDiscos
 {
@@ -23,9 +26,34 @@ namespace LojaDiscos
         public GerirFornecedores()
         {
             InitializeComponent();
+            List();
         }
 
-   
+        private void List()
+        {
+
+            //SqlConnection con = ConnectionHelper.GetConnection();
+
+            using (SqlConnection sc = ConnectionHelper.GetConnection())
+            {
+                sc.Open();
+                string sql = "Select * FROM Pessoa As P JOIN Fornecedor As C ON P.nif = C.nif";
+                SqlCommand com = new SqlCommand(sql, sc);
+
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dataGrid.ItemsSource = dt.DefaultView;
+                }
+
+
+
+            }
+        }
+
+
         private void criarFichaFornecedor_Click(object sender, RoutedEventArgs e)
         {
             CriarFichaFornecedor criarFichaFornecedor = new CriarFichaFornecedor();
@@ -34,7 +62,29 @@ namespace LojaDiscos
 
         private void pesquisar_Click(object sender, RoutedEventArgs e)
         {
-            //ListSearch();
+            ListSearch();
+        }
+
+        private void ListSearch()
+        {
+
+            //SqlConnection con = ConnectionHelper.GetConnection();
+
+            using (SqlConnection sc = ConnectionHelper.GetConnection())
+            {
+                sc.Open();
+                string sql = "Select * FROM Pessoa As P JOIN Fornecedor As C ON P.nif = C.nif WHERE [nif]= @nif";
+                SqlCommand com = new SqlCommand(sql, sc);
+                com.Parameters.AddWithValue("@nif", nif_pesq.Text);
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dataGrid.ItemsSource = dt.DefaultView;
+                }
+
+            }
         }
 
         private void dataGrid_SizeChanged(object sender, SizeChangedEventArgs e)
