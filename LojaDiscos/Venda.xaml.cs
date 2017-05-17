@@ -23,10 +23,11 @@ namespace LojaDiscos
     public partial class Venda : Page
     {
         Int32 nif_cliente = 0;
-       
+        int quantidade;
         public Venda()
         {
             InitializeComponent();
+            quantidade = 0;
         }
 
         /*private void dataGrid_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -149,48 +150,51 @@ namespace LojaDiscos
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
                     dataGridVenda.ItemsSource = dt.DefaultView;
+                    
+                    
+                        var workingWidth = dataGridVenda.ActualWidth - SystemParameters.VerticalScrollBarWidth; // take into account vertical scrollbar
+                        var col0 = 0.1;
+                        var col1 = 0.4;
+                        var col2 = 0.15;
+                        var col3 = 0.15;
+                        var col4 = 0.2;
 
-                    var workingWidth = dataGridVenda.ActualWidth - SystemParameters.VerticalScrollBarWidth; // take into account vertical scrollbar
-                    var col0 = 0.1;
-                    var col1 = 0.4;
-                    var col2 = 0.15;
-                    var col3 = 0.15;
-                    var col4 = 0.2;
+                        dataGridVenda.Columns[0].Width = workingWidth * col0;
+                        dataGridVenda.Columns[0].Header = "Código";
+                        dataGridVenda.Columns[0].DisplayIndex = 0;
 
-                    dataGridVenda.Columns[0].Width = workingWidth * col0;
-                    dataGridVenda.Columns[0].Header = "Código";
-                    dataGridVenda.Columns[0].DisplayIndex = 0;
+                        dataGridVenda.Columns[1].Width = workingWidth * col2;
+                        dataGridVenda.Columns[1].Header = "Preço";
+                        dataGridVenda.Columns[1].DisplayIndex = 2;
 
-                    dataGridVenda.Columns[1].Width = workingWidth * col2;
-                    dataGridVenda.Columns[1].Header = "Preço";
-                    dataGridVenda.Columns[1].DisplayIndex = 2;
+                        dataGridVenda.Columns[2].Visibility = Visibility.Hidden;
 
-                    dataGridVenda.Columns[2].Visibility = Visibility.Hidden;
+                        dataGridVenda.Columns[3].Width = workingWidth * col1;
+                        dataGridVenda.Columns[3].Header = "Designação";
+                        dataGridVenda.Columns[3].DisplayIndex = 1;
 
-                    dataGridVenda.Columns[3].Width = workingWidth * col1;
-                    dataGridVenda.Columns[3].Header = "Designação";
-                    dataGridVenda.Columns[3].DisplayIndex = 1;
+                        dataGridVenda.Columns[4].Visibility = Visibility.Hidden;
+                        dataGridVenda.Columns[5].Visibility = Visibility.Hidden;
+                        dataGridVenda.Columns[6].Visibility = Visibility.Hidden;
+                        dataGridVenda.Columns[7].Visibility = Visibility.Hidden;
+                        dataGridVenda.Columns[8].Visibility = Visibility.Hidden;
 
-                    dataGridVenda.Columns[4].Visibility = Visibility.Hidden;
-                    dataGridVenda.Columns[5].Visibility = Visibility.Hidden;
-                    dataGridVenda.Columns[6].Visibility = Visibility.Hidden;
-                    dataGridVenda.Columns[7].Visibility = Visibility.Hidden;
-                    dataGridVenda.Columns[8].Visibility = Visibility.Hidden;
-
-
-                    DataGridTextColumn qtd = new DataGridTextColumn();
-                    qtd.Header = "Quantidade";
-                    qtd.IsReadOnly = false;
-                    qtd.Width = workingWidth * col3;
-                    dataGridVenda.Columns.Add(qtd);
-                    qtd.IsReadOnly = false;
+                    if (quantidade == 1)
+                    {
+                        DataGridTextColumn qtd = new DataGridTextColumn();
+                        qtd.Header = "Quantidade";
+                        qtd.IsReadOnly = false;
+                        qtd.Width = workingWidth * col3;
+                        dataGridVenda.Columns.Add(qtd);
+                        qtd.IsReadOnly = false;
                   
 
-                    DataGridTextColumn tot = new DataGridTextColumn();
-                    tot.Header = "Preço Total";
-                    tot.Width = workingWidth * col4;
-                    dataGridVenda.Columns.Add(tot);
-                  
+                        DataGridTextColumn tot = new DataGridTextColumn();
+                        tot.Header = "Preço Total";
+                        tot.Width = workingWidth * col4;
+                        dataGridVenda.Columns.Add(tot);
+                    }
+
                 }
                 
                 foreach (DataRowView row in dataGridVenda.Items)
@@ -212,8 +216,13 @@ namespace LojaDiscos
 
         private void HandleKeyPress(object sender, KeyEventArgs e)
         {
+            quantidade++;
 
-            showDisco();
+            if (e.Key == Key.F1)
+            {
+                showDisco();
+            }
+        
         }
 
     }
