@@ -40,6 +40,8 @@ Insert into Discos values (11111,24.99, 15, 'Master of Puppets', 1986, 4, 3, 4, 
 FROM Openrowset( Bulk 'C:\Imagens_Discos_IHC\master.jpg', Single_Blob) as img));
 Insert into Discos values (23435,14.99, 55, 'Gostava de Ser Quem Era', 1980, 5, 4, 1, (SELECT BulkColumn 
 FROM Openrowset( Bulk 'C:\Imagens_Discos_IHC\amalia.jpg', Single_Blob) as img));
+Insert into Discos values (23436,14.99, 55, 'Gostava de Ser Quem Era', 1980, 5, 4, 1, (SELECT BulkColumn 
+FROM Openrowset( Bulk 'C:\Imagens_Discos_IHC\amalia.jpg', Single_Blob) as img));
 
 Insert into Encomendas values ('2017-06-18 ', 24543495, 12345);
 Insert into Encomendas values ('2017-07-18 ', 24543495, 11111);

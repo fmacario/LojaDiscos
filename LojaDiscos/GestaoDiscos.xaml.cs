@@ -232,8 +232,7 @@ namespace LojaDiscos
                     preço.Content = "Preço: " + cmd.Parameters["@preço"].Value.ToString() + "€";
                     stock.Content = "Stock: " + cmd.Parameters["@stock"].Value.ToString();
 
-                   
-
+        
                     wpd.Children.Add(artista);
                     wpd.Children.Add(titulo);
                     wpd.Children.Add(ano);

@@ -23,6 +23,7 @@ namespace LojaDiscos
     public partial class Venda : Page
     {
         Int32 nif_cliente = 0;
+       
         public Venda()
         {
             InitializeComponent();
@@ -53,7 +54,6 @@ namespace LojaDiscos
 
         private void getCliente()
         {
-            
 
             SqlConnection conn = ConnectionHelper.GetConnection();
 
@@ -71,19 +71,44 @@ namespace LojaDiscos
                 cmd.ExecuteNonQuery();
                 conn.Close();
 
-                cliente.Text = cmd.Parameters["@nome"].Value.ToString();
+                if (cmd.Parameters["@nome"].Value.ToString() != "")
+                {
+                    cliente.Text = cmd.Parameters["@nome"].Value.ToString();
+                }
+                else
+                {
+                    if (MessageBox.Show("Deseja adicionar novo cliente?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                    {
+                        //do no stuff
+                        Venda contin = new Venda();
+                        this.NavigationService.Navigate(contin);
 
+                    }
+                    else
+                    {
+                        //do yes stuff
+                        CriarFichaCliente newcliente = new CriarFichaCliente();
+                        this.NavigationService.Navigate(newcliente);
+                    }
 
+                }
             }
         }
-
         private void pesquisa_Click(object sender, RoutedEventArgs e)
         {
+
             getCliente();
         }
 
         private void concluirVenda_Click(object sender, RoutedEventArgs e)
         {
+
+            int codigo = 0;
+            foreach (DataRowView row in dataGridVenda.Items)
+            {
+                codigo = Int32.Parse(row.Row.ItemArray[0].ToString());
+            }
+
             SqlConnection conn = ConnectionHelper.GetConnection();
             DateTime thisDay = DateTime.Today;
             using (SqlCommand cmd = new SqlCommand("RegistrarVenda", conn))
@@ -93,7 +118,7 @@ namespace LojaDiscos
 
                 cmd.Parameters.Add("@data_venda", SqlDbType.Date).Value = thisDay.ToShortDateString();
                 cmd.Parameters.Add("@nif_funcionario", SqlDbType.Int).Value = 98372344;
-                cmd.Parameters.Add("@id_disco", SqlDbType.Int).Value = 99999;
+                cmd.Parameters.Add("@id_disco", SqlDbType.Int).Value = codigo;
                 cmd.Parameters.Add("@nif_cliente", SqlDbType.Int).Value = nif_cliente;
 
                 conn.Open();
@@ -110,19 +135,67 @@ namespace LojaDiscos
         {
             //SqlConnection con = ConnectionHelper.GetConnection();
 
+
             using (SqlConnection sc = ConnectionHelper.GetConnection())
             {
                 sc.Open();
-                string sql = "Select * FROM Discos WHERE [id_disco] = @id_disco";
+                //string sql = "Select * FROM Discos WHERE [id_disco] = @id_disco";
+                string sql = "SELECT TOP 1 * FROM Discos ORDER BY NEWID()";
                 SqlCommand com = new SqlCommand(sql, sc);
-                com.Parameters.AddWithValue("@id_disco", 99999);
+                //com.Parameters.AddWithValue("@id_disco", 99999);
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter(com))
                 {
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
                     dataGridVenda.ItemsSource = dt.DefaultView;
+
+                    var workingWidth = dataGridVenda.ActualWidth - SystemParameters.VerticalScrollBarWidth; // take into account vertical scrollbar
+                    var col0 = 0.1;
+                    var col1 = 0.4;
+                    var col2 = 0.15;
+                    var col3 = 0.15;
+                    var col4 = 0.2;
+
+                    dataGridVenda.Columns[0].Width = workingWidth * col0;
+                    dataGridVenda.Columns[0].Header = "Código";
+                    dataGridVenda.Columns[0].DisplayIndex = 0;
+
+                    dataGridVenda.Columns[1].Width = workingWidth * col2;
+                    dataGridVenda.Columns[1].Header = "Preço";
+                    dataGridVenda.Columns[1].DisplayIndex = 2;
+
+                    dataGridVenda.Columns[2].Visibility = Visibility.Hidden;
+
+                    dataGridVenda.Columns[3].Width = workingWidth * col1;
+                    dataGridVenda.Columns[3].Header = "Designação";
+                    dataGridVenda.Columns[3].DisplayIndex = 1;
+
+                    dataGridVenda.Columns[4].Visibility = Visibility.Hidden;
+                    dataGridVenda.Columns[5].Visibility = Visibility.Hidden;
+                    dataGridVenda.Columns[6].Visibility = Visibility.Hidden;
+                    dataGridVenda.Columns[7].Visibility = Visibility.Hidden;
+                    dataGridVenda.Columns[8].Visibility = Visibility.Hidden;
+
+
+                    DataGridTextColumn qtd = new DataGridTextColumn();
+                    qtd.Header = "Quantidade";
+                    qtd.IsReadOnly = false;
+                    qtd.Width = workingWidth * col3;
+                    dataGridVenda.Columns.Add(qtd);
+                    qtd.IsReadOnly = false;
                   
+
+                    DataGridTextColumn tot = new DataGridTextColumn();
+                    tot.Header = "Preço Total";
+                    tot.Width = workingWidth * col4;
+                    dataGridVenda.Columns.Add(tot);
+                  
+                }
+                
+                foreach (DataRowView row in dataGridVenda.Items)
+                {
+                    totalE.Text = row.Row.ItemArray[1].ToString();
                 }
             }
 
@@ -132,11 +205,14 @@ namespace LojaDiscos
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             var window = Window.GetWindow(this);
+
             window.KeyDown += HandleKeyPress;
+
         }
 
         private void HandleKeyPress(object sender, KeyEventArgs e)
         {
+
             showDisco();
         }
 

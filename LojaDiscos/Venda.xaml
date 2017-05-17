@@ -25,9 +25,9 @@
 
         <TextBlock Style="{StaticResource textBlock}" FontSize="30" x:Name="clienteNome" Text="Cliente: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"/>
         <TextBox Style="{StaticResource textBox}" x:Name="cliente" VerticalAlignment="Center" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="2" Height="30" FontSize="20" />
-        <Button Style="{StaticResource botoes}" x:Name="pesquisa" Content="Pesquisa" Grid.Column="4" Grid.Row="0" Click="pesquisa_Click" />
+        <Button Style="{StaticResource botoes}" x:Name="pesquisa" Content="Pesquisa" Grid.Column="4" Grid.Row="0" Click="pesquisa_Click" Height="30"/>
 
-        <DataGrid Style="{StaticResource dataGrid}" x:Name="dataGridVenda" IsReadOnly="True" ItemsSource="{Binding}" Grid.ColumnSpan="5" Grid.Row="1" Margin="20,50,20,50" MinHeight="300" Height="auto" ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <DataGrid Style="{StaticResource dataGrid}" x:Name="dataGridVenda" IsReadOnly="True" ItemsSource="{Binding}" Grid.ColumnSpan="5" Grid.Row="1" Margin="20,50,20,50" MinHeight="300" Height="auto" ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="Background" Value="#00bf8c" />
