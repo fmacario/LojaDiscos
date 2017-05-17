@@ -46,14 +46,20 @@
             <ComboBoxItem Content="DVD" HorizontalAlignment="Left" Width="92"/>
             <ComboBoxItem Content="Blu-ray" HorizontalAlignment="Left" Width="92"/>
         </ComboBox>
-        <Image x:Name="image"  HorizontalAlignment="Left" Height="121" Grid.Row="2" Grid.RowSpan="2" VerticalAlignment="Top" Width="111" Grid.Column="4"/>
-        <Label x:Name="artista" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="1.833,-3.577"/>
-        <Label x:Name="titulo" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="10,36,0,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="1.833,-3.577" Grid.RowSpan="2"/>
-        <Label x:Name="genero" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="10,6,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="1.833,-3.577"/>
-        <Label x:Name="ano" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="10,37,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="1.833,-3.577" Grid.RowSpan="2"/>
-        <Label x:Name="stock" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="10,3,0,0" Grid.Row="4" VerticalAlignment="Top" RenderTransformOrigin="1.833,-3.577"/>
-        <Label x:Name="preço" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="10,25,0,0" Grid.Row="4" VerticalAlignment="Top" RenderTransformOrigin="1.833,-3.577"/>
+       <!-- <Image x:Name="image"  HorizontalAlignment="Left" Height="121" Grid.Row="2" Grid.RowSpan="2" VerticalAlignment="Top" Width="111" Grid.Column="4"/>
+        <Label x:Name="artista" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="1.833,-3.577"/>
+        <Label x:Name="titulo" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,36,0,0" Grid.Row="2" VerticalAlignment="Top" RenderTransformOrigin="1.833,-3.577" Grid.RowSpan="2"/>
+        <Label x:Name="genero" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,6,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="1.833,-3.577"/>
+        <Label x:Name="ano" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,37,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="1.833,-3.577" Grid.RowSpan="2"/>
+        <Label x:Name="stock" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,3,0,0" Grid.Row="4" VerticalAlignment="Top" RenderTransformOrigin="1.833,-3.577"/>
+        <Label x:Name="preço" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,25,0,0" Grid.Row="4" VerticalAlignment="Top" RenderTransformOrigin="1.833,-3.577"/>
+-->
 
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="5" VerticalScrollBarVisibility="Auto">
+            <WrapPanel Name="wrapPanelDiscos"  >
+            </WrapPanel>
 
+        </ScrollViewer>
+        
     </Grid>
 </Page>

@@ -79,6 +79,12 @@ namespace LojaDiscos
             pesquisarCD();
         }
 
+        private void wpd_MouseLeftButtonUp(object sender, RoutedEventArgs e)
+        {
+            // codigo se cliacado (editar cd)
+            MessageBox.Show(sender.GetType().ToString());
+        }
+
         private void pesquisarCD()
         {
 
@@ -86,7 +92,12 @@ namespace LojaDiscos
             if (comboBox.Text == "Código")
             {
                 SqlConnection conn = ConnectionHelper.GetConnection();
-
+                WrapPanel wpd = new WrapPanel();
+                wpd.Height = 300;
+                wpd.Width = 300;
+                Thickness margin = wpd.Margin;
+                margin.Left = 30;
+                wpd.Margin = margin;
                 using (SqlCommand cmd = new SqlCommand("pesquisaDiscos", conn))
                 {
 
@@ -110,15 +121,36 @@ namespace LojaDiscos
                     cmd.ExecuteNonQuery();
                     conn.Close();
 
+                    /*
+                    artista.Content = "Artista: " + cmd.Parameters["@artista"].Value.ToString();
+                    titulo.Content = "Título: " + cmd.Parameters["@titulo"].Value.ToString();
+                    ano.Content = "Ano: " + cmd.Parameters["@ano"].Value.ToString();
+                    genero.Content = "Género: " + cmd.Parameters["@genero"].Value.ToString();
+                    preço.Content = "Preço: " + cmd.Parameters["@preço"].Value.ToString() + "€";
+                    stock.Content = "Stock: " + cmd.Parameters["@stock"].Value.ToString();
+                    */
 
-                    artista.Content = cmd.Parameters["@artista"].Value.ToString();
+                    Label artista = new Label();
+                    Label titulo = new Label();
+                    Label ano = new Label();
+                    Label genero = new Label();
+                    Label preço = new Label();
+                    Label stock = new Label();
+
+                    artista.Content = cmd.Parameters["@artista"].Value.ToString() + ":";
                     titulo.Content = cmd.Parameters["@titulo"].Value.ToString();
-                    ano.Content = cmd.Parameters["@ano"].Value.ToString();
-                    genero.Content = cmd.Parameters["@genero"].Value.ToString();
-                    preço.Content = cmd.Parameters["@preço"].Value.ToString() + "€";
-                    stock.Content = cmd.Parameters["@stock"].Value.ToString();
+                    ano.Content = "Ano: " + cmd.Parameters["@ano"].Value.ToString();
+                    genero.Content = "Género: " + cmd.Parameters["@genero"].Value.ToString();
+                    preço.Content = "Preço: " + cmd.Parameters["@preço"].Value.ToString() + "€";
+                    stock.Content = "Stock: " + cmd.Parameters["@stock"].Value.ToString();
 
-
+                    wpd.Children.Add(artista);
+                    wpd.Children.Add(titulo);
+                    wpd.Children.Add(ano);
+                    wpd.Children.Add(genero);
+                    wpd.Children.Add(preço);
+                    wpd.Children.Add(stock);
+                    
                 }
                 //IMAGEM DISCO
 
@@ -136,11 +168,104 @@ namespace LojaDiscos
                     imageSource.BeginInit();
                     imageSource.StreamSource = mem;
                     imageSource.EndInit();
-
+                    Image image = new Image();
                     image.Source = imageSource;
-
+                    wpd.Children.Add(image);
 
                 }
+                this.wrapPanelDiscos.Children.Add(wpd);
+            }
+            //pesquisa por ano
+            else if (comboBox.Text == "Ano")    // tem de se acrescentar um for. a cada iteração adiciona um novo wpd
+            {
+                WrapPanel wpd = new WrapPanel();
+                wpd.Height = 300;
+                wpd.Width = 300;
+                Thickness margin = wpd.Margin;
+                margin.Left = 30;
+                wpd.Margin = margin;
+                SqlConnection conn = ConnectionHelper.GetConnection();
+
+                using (SqlCommand cmd = new SqlCommand("pesquisaDiscosAno", conn))
+                {
+                    
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@pesquisa", disco_pesq.Text);
+
+                    cmd.Parameters.Add("@preço", SqlDbType.Money);
+                    cmd.Parameters["@preço"].Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@titulo", SqlDbType.VarChar, 30);
+                    cmd.Parameters["@titulo"].Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@Ano", SqlDbType.Int);
+                    cmd.Parameters["@Ano"].Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@artista", SqlDbType.VarChar, 30);
+                    cmd.Parameters["@artista"].Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@genero", SqlDbType.VarChar, 30);
+                    cmd.Parameters["@genero"].Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@stock", SqlDbType.Int);
+                    cmd.Parameters["@stock"].Direction = ParameterDirection.Output;
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                    /*
+                    artista.Content = "Artista: " + cmd.Parameters["@artista"].Value.ToString();
+                    titulo.Content = "Título: " + cmd.Parameters["@titulo"].Value.ToString();
+                    ano.Content = "Ano: " + cmd.Parameters["@ano"].Value.ToString();
+                    genero.Content = "Género: " + cmd.Parameters["@genero"].Value.ToString();
+                    preço.Content = "Preço: " + cmd.Parameters["@preço"].Value.ToString() + "€";
+                    stock.Content = "Stock: " + cmd.Parameters["@stock"].Value.ToString();
+                    */
+
+                    Label artista = new Label();
+                    Label titulo = new Label();
+                    Label ano = new Label();
+                    Label genero = new Label();
+                    Label preço = new Label();
+                    Label stock = new Label();
+
+                    artista.Content = cmd.Parameters["@artista"].Value.ToString() + ":";
+                    titulo.Content = cmd.Parameters["@titulo"].Value.ToString();
+                    ano.Content = "Ano: " + cmd.Parameters["@ano"].Value.ToString();
+                    genero.Content = "Género: " + cmd.Parameters["@genero"].Value.ToString();
+                    preço.Content = "Preço: " + cmd.Parameters["@preço"].Value.ToString() + "€";
+                    stock.Content = "Stock: " + cmd.Parameters["@stock"].Value.ToString();
+
+                   
+
+                    wpd.Children.Add(artista);
+                    wpd.Children.Add(titulo);
+                    wpd.Children.Add(ano);
+                    wpd.Children.Add(genero);
+                    wpd.Children.Add(preço);
+                    wpd.Children.Add(stock); 
+
+                }
+                //IMAGEM DISCO
+
+                conn.Open();
+                string myquery = ("SELECT imagemDisco, ano FROM Discos WHERE ano= '" + disco_pesq.Text + "';");
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(new SqlCommand(myquery, conn));
+                DataSet dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                if (dataSet.Tables[0].Rows.Count == 1) ////////////////////////////
+                {
+                    Byte[] data = new Byte[0];
+                    data = (Byte[])(dataSet.Tables[0].Rows[0]["imagemDisco"]);
+                    MemoryStream mem = new MemoryStream(data);
+                    var imageSource = new BitmapImage();
+                    imageSource.BeginInit();
+                    imageSource.StreamSource = mem;
+                    imageSource.EndInit();
+                    Image image = new Image();
+                    image.Source = imageSource;
+                    
+                    wpd.Children.Add(image);
+
+                }
+                wpd.MouseLeftButtonUp += wpd_MouseLeftButtonUp;
+                this.wrapPanelDiscos.Children.Add(wpd);
             }
         }
     }
