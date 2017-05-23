@@ -9,6 +9,26 @@
       WindowTitle="Validar Encomenda">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <DockPanel Height="20" Grid.ColumnSpan="5">
+            <Menu Style="{StaticResource menu}" DockPanel.Dock="Top">
+                <MenuItem Header="Cliente">
+                    <MenuItem Header="Venda" Style="{StaticResource menuItem}" Click="vendaCliente_Click"></MenuItem>
+                    <MenuItem Header="Reserva" Style="{StaticResource menuItem}" Click="reservaCliente_Click"></MenuItem>
+                    <MenuItem Header="Gerir Clientes" Style="{StaticResource menuItem}" Click="gerirCliente_Click"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Loja">
+                    <MenuItem Header="Stock" Style="{StaticResource menuItem}" Click="discos_Click"></MenuItem>
+                    <MenuItem Header="Adicionar disco" Style="{StaticResource menuItem}" Click="adicionaDisco_Click"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Fornecedor">
+                    <MenuItem Header="Encomenda" Style="{StaticResource menuItem}" Click="encomendaFornecedor_Click"></MenuItem>
+                    <MenuItem Header="Validar Encomenda" Style="{StaticResource menuItem}" Click="validarFornecedor_Click"></MenuItem>
+                    <MenuItem Header="Gerir Fornecedores" Style="{StaticResource menuItem}" Click="gerirFornecedor_Click"></MenuItem>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
     </Grid>
 </Page>

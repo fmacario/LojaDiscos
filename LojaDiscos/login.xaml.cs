@@ -23,12 +23,13 @@ namespace LojaDiscos
         public login()
         {
             InitializeComponent();
+            //ShowsNavigationUI = false;
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            Menu discos = new Menu();
-            this.NavigationService.Navigate(discos);
+            Venda venda = new Venda();
+            this.NavigationService.Navigate(venda);
         }
     }
 }

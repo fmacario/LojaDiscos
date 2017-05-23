@@ -23,7 +23,7 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-
+        <Frame x:Name="_FrameName" NavigationUIVisibility="Hidden" />
         <Button Style="{StaticResource botoesMenu}" x:Name="vendaCliente" Content="Venda" Grid.Row="2" Grid.Column="0" Click="vendaCliente_Click" />
         <Button Style="{StaticResource botoesMenu}" x:Name="reservaCliente" Content="Reserva" Grid.Row="3" Grid.Column="0" Click="reservaCliente_Click" />
         <Button Style="{StaticResource botoesMenu}" x:Name="gerirCliente" Content="Gerir Clientes" Grid.Row="4" Grid.Column="0" Click="gerirCliente_Click" />

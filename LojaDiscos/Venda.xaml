@@ -17,18 +17,19 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition />
             <RowDefinition Height="auto"/>
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <TextBlock Style="{StaticResource textBlock}" FontSize="30" x:Name="clienteNome" Text="Cliente: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"/>
-        <TextBox Style="{StaticResource textBox}" x:Name="cliente" VerticalAlignment="Center" Grid.Column="2" Grid.Row="0" Height="30" FontSize="20" />
-        <Button Style="{StaticResource botoes}" x:Name="pesquisa" Content="Pesquisa" Grid.Column="3" Grid.Row="0" Click="pesquisa_Click" Height="30" Margin="50,0"/>
-        <Button Style="{StaticResource botoes}" x:Name="addCliente" Content="Novo cliente" Grid.Column="4" Grid.Row="0" Click="addCliente_Click" Height="30" Margin="50,0"/>
+        <TextBlock Style="{StaticResource textBlock}" FontSize="30" x:Name="clienteNome" Text="Cliente: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
+        <TextBox Style="{StaticResource textBox}" x:Name="cliente" VerticalAlignment="Center" Grid.Column="2" Grid.Row="1" Height="30" FontSize="20" />
+        <Button Style="{StaticResource botoes}" x:Name="pesquisa" Content="Pesquisa" Grid.Column="3" Grid.Row="1" Click="pesquisa_Click" Height="30" Margin="50,0"/>
+        <Button Style="{StaticResource botoes}" x:Name="addCliente" Content="Novo cliente" Grid.Column="4" Grid.Row="1" Click="addCliente_Click" Height="30" Margin="50,0"/>
 
-        <DataGrid Style="{StaticResource dataGrid}" x:Name="dataGridVenda" IsReadOnly="True" ItemsSource="{Binding}" Grid.ColumnSpan="5" Grid.Row="1" Margin="20,50,20,50" MinHeight="300" Height="auto" ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+        <DataGrid Style="{StaticResource dataGrid}" x:Name="dataGridVenda" IsReadOnly="True" ItemsSource="{Binding}" Grid.ColumnSpan="5" Grid.Row="2" Margin="20,50,20,50" MinHeight="300" Height="auto" ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="Background" Value="#00bf8c" />
@@ -38,15 +39,34 @@
             </DataGrid.Resources>
         </DataGrid>
         <!--<DataGrid x:Name="dataGrid" ItemsSource="{Binding}" Grid.ColumnSpan="5" Grid.Row="1" Width="auto" Margin="20,50,20,50" MinHeight="300" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SizeChanged="dataGrid_SizeChanged" />-->
-        <RadioButton Style="{StaticResource radioButton}" x:Name="numerario" Content="Numerário" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"/>
-        <RadioButton Style="{StaticResource radioButton}" x:Name="cartao" Content="Cartão" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center"/>
-        <RadioButton Style="{StaticResource radioButton}" x:Name="cheque" Content="Cheque" Grid.Column="3" Grid.Row="2" VerticalAlignment="Center"/>
+        <RadioButton Style="{StaticResource radioButton}" x:Name="numerario" Content="Numerário" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"/>
+        <RadioButton Style="{StaticResource radioButton}" x:Name="cartao" Content="Cartão" Grid.Column="2" Grid.Row="3" VerticalAlignment="Center"/>
+        <RadioButton Style="{StaticResource radioButton}" x:Name="cheque" Content="Cheque" Grid.Column="3" Grid.Row="3" VerticalAlignment="Center"/>
 
-        <TextBlock Style="{StaticResource textBlock}" x:Name="total" Text="Total: " Grid.Column="2" Grid.Row="3" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-        <TextBlock Style="{StaticResource textBlock}" x:Name="totalE" Text="00,00 €" Grid.Column="3" Grid.Row="3" FontSize="30" VerticalAlignment="Center"/>
-        <Button Style="{StaticResource botoes}" x:Name="concluirVenda" Content="Concluir" Grid.Column="4" Grid.Row="3" Margin="0,0,10,10" VerticalAlignment="Center" MinWidth="100" MinHeight="55" Click="concluirVenda_Click"/>
+        <TextBlock Style="{StaticResource textBlock}" x:Name="total" Text="Total: " Grid.Column="2" Grid.Row="4" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBlock Style="{StaticResource textBlock}" x:Name="totalE" Text="00,00 €" Grid.Column="3" Grid.Row="4" FontSize="30" VerticalAlignment="Center"/>
+        <Button Style="{StaticResource botoes}" x:Name="concluirVenda" Content="Concluir" Grid.Column="4" Grid.Row="4" Margin="0,0,10,10" VerticalAlignment="Center" MinWidth="100" MinHeight="55" Click="concluirVenda_Click"/>
        
         <UserControl Loaded="UserControl_Loaded">
         </UserControl>
+
+        <DockPanel Height="20" Grid.ColumnSpan="5">
+            <Menu Style="{StaticResource menu}" DockPanel.Dock="Top">
+                <MenuItem Header="Cliente">
+                    <MenuItem Header="Venda" Style="{StaticResource menuItem}" Click="vendaCliente_Click"></MenuItem>
+                    <MenuItem Header="Reserva" Style="{StaticResource menuItem}" Click="reservaCliente_Click"></MenuItem>
+                    <MenuItem Header="Gerir Clientes" Style="{StaticResource menuItem}" Click="gerirCliente_Click"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Loja">
+                    <MenuItem Header="Stock" Style="{StaticResource menuItem}" Click="discos_Click"></MenuItem>
+                    <MenuItem Header="Adicionar disco" Style="{StaticResource menuItem}" Click="adicionaDisco_Click"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Fornecedor">
+                    <MenuItem Header="Encomenda" Style="{StaticResource menuItem}" Click="encomendaFornecedor_Click"></MenuItem>
+                    <MenuItem Header="Validar Encomenda" Style="{StaticResource menuItem}" Click="validarFornecedor_Click"></MenuItem>
+                    <MenuItem Header="Gerir Fornecedores" Style="{StaticResource menuItem}" Click="gerirFornecedor_Click"></MenuItem>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
     </Grid>
 </Page>

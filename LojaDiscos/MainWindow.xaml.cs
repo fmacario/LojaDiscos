@@ -26,6 +26,7 @@ namespace LojaDiscos
         public MainWindow()
         {
             InitializeComponent();
+            ShowsNavigationUI = false;
         }
 
         public class ConnectionHelper

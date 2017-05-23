@@ -44,7 +44,17 @@
             <Setter Property="HorizontalGridLinesBrush" Value="#00bf8c"/>
             <Setter Property="VerticalGridLinesBrush" Value="#00bf8c"/>
         </Style>
-        
+
+        <Style x:Key="menu" TargetType="Menu">
+            <Setter Property="Background" Value="#323235"/>
+            <Setter Property="Foreground" Value="#00bf8c"/>
+        </Style>
+
+        <Style x:Key="menuItem" TargetType="MenuItem">
+            <Setter Property="Foreground" Value="#FF2D2D30"/>
+        </Style>
+
+
     </Application.Resources>
 
 </Application>

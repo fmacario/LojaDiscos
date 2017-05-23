@@ -107,5 +107,53 @@ namespace LojaDiscos
             dataGrid.Columns[4].Width = workingWidth * col5;
             dataGrid.Columns[5].Width = workingWidth * col6;
         }
+
+        private void vendaCliente_Click(object sender, RoutedEventArgs e)
+        {
+            Venda venda = new Venda();
+            this.NavigationService.Navigate(venda);
+        }
+
+        private void reservaCliente_Click(object sender, RoutedEventArgs e)
+        {
+            Reserva reserva = new Reserva();
+            this.NavigationService.Navigate(reserva);
+        }
+
+        private void gerirCliente_Click(object sender, RoutedEventArgs e)
+        {
+            GerirClientes gerirClientes = new GerirClientes();
+            this.NavigationService.Navigate(gerirClientes);
+        }
+
+        private void gerirFornecedor_Click(object sender, RoutedEventArgs e)
+        {
+            GerirFornecedores gerirFornecedores = new GerirFornecedores();
+            this.NavigationService.Navigate(gerirFornecedores);
+        }
+
+        private void discos_Click(object sender, RoutedEventArgs e)
+        {
+            GestaoDiscos gestaoDiscos = new GestaoDiscos();
+            this.NavigationService.Navigate(gestaoDiscos);
+        }
+
+        private void encomendaFornecedor_Click(object sender, RoutedEventArgs e)
+        {
+            Encomenda encomenda = new Encomenda();
+            this.NavigationService.Navigate(encomenda);
+        }
+
+        private void validarFornecedor_Click(object sender, RoutedEventArgs e)
+        {
+            ValidarEncomenda validarEncomenda = new ValidarEncomenda();
+            this.NavigationService.Navigate(validarEncomenda);
+        }
+
+        private void adicionaDisco_Click(object sender, RoutedEventArgs e)
+        {
+            CriarDisco criarDisco = new CriarDisco();
+            this.NavigationService.Navigate(criarDisco);
+        }
     }
 }
