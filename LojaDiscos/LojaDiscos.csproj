@@ -195,7 +195,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="png\001-add-user.png" />
+    <Resource Include="png\002-compact-disc.png" />
+    <Resource Include="png\003-stock.png" />
+    <Resource Include="png\004-check.png" />
+    <Resource Include="png\005-buy.png" />
+    <Resource Include="png\006-shopping-cart.png" />
+    <Resource Include="png\007-shopping-cart-1.png" />
+    <Resource Include="png\008-users.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\icon.png" />
   </ItemGroup>

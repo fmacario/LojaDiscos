@@ -28,11 +28,14 @@ namespace LojaDiscos
         Boolean teste = false;
         double totalDouble = 0;
         DataTable dt = new DataTable();
+        int count = 0;
+        DataGridTextColumn[] dataGridColumn = new DataGridTextColumn[11];
 
         public Venda()
         {
             InitializeComponent();
             quantidade = 0;
+            //criarTabela();
         }
 
         public Venda(string nif)
@@ -42,29 +45,6 @@ namespace LojaDiscos
             quantidade = 0;
             getCliente();
         }
-
-        /*private void dataGrid_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-
-            DataGrid dataGrid = sender as DataGrid;
-
-            var workingWidth = dataGrid.ActualWidth - SystemParameters.VerticalScrollBarWidth; // take into account vertical scrollbar
-            var col1 = 0.1;
-            var col2 = 0.3;
-            var col3 = 0.1;
-            var col4 = 0.3;
-            var col5 = 0.2;
-            var col6 = 0;
-
-            dataGrid.Columns[0].Width = workingWidth * col1;
-            dataGrid.Columns[1].Width = workingWidth * col2;
-            dataGrid.Columns[2].Width = workingWidth * col3;
-            dataGrid.Columns[3].Width = workingWidth * col4;
-            dataGrid.Columns[4].Width = workingWidth * col5;
-            dataGrid.Columns[5].Width = workingWidth * col6;
-        }
-        */
-
 
         private void getCliente()
         {
@@ -202,10 +182,14 @@ namespace LojaDiscos
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter(com))
                 {
-                    DataTable dt = new DataTable();
+                    //DataTable dt = new DataTable();
+                    MessageBox.Show(adapter.ToString());
                     adapter.Fill(dt);
                     dataGridVenda.ItemsSource = dt.DefaultView;
                     
+                    if (count == 0)
+                        apagarTitulos(dataGridVenda);
+
                     var workingWidth = dataGridVenda.ActualWidth - SystemParameters.VerticalScrollBarWidth; // take into account vertical scrollbar
                     var col0 = 0.1;
                     var col1 = 0.4;
@@ -213,19 +197,27 @@ namespace LojaDiscos
                     var col3 = 0.15;
                     var col4 = 0.2;
 
+
                     dataGridVenda.Columns[0].Width = workingWidth * col0;
                     dataGridVenda.Columns[0].Header = "Código";
                     dataGridVenda.Columns[0].DisplayIndex = 0;
+                    dataGridVenda.Columns[0].IsReadOnly = true;
+
+                    
+
+                    
 
                     dataGridVenda.Columns[1].Width = workingWidth * col2;
                     dataGridVenda.Columns[1].Header = "Preço";
                     dataGridVenda.Columns[1].DisplayIndex = 2;
+                    dataGridVenda.Columns[1].IsReadOnly = true;
 
                     dataGridVenda.Columns[2].Visibility = Visibility.Hidden;
 
                     dataGridVenda.Columns[3].Width = workingWidth * col1;
                     dataGridVenda.Columns[3].Header = "Designação";
                     dataGridVenda.Columns[3].DisplayIndex = 1;
+                    dataGridVenda.Columns[3].IsReadOnly = true;
 
                     dataGridVenda.Columns[4].Visibility = Visibility.Hidden;
                     dataGridVenda.Columns[5].Visibility = Visibility.Hidden;
@@ -240,17 +232,18 @@ namespace LojaDiscos
                         qtd.IsReadOnly = false;
                         qtd.Width = workingWidth * col3;
                         dataGridVenda.Columns.Add(qtd);
-                        qtd.IsReadOnly = false;
-                  
-
+                        
                         DataGridTextColumn tot = new DataGridTextColumn();
                         tot.Header = "Preço Total";
                         tot.Width = workingWidth * col4;
+                        dataGridVenda.Columns[5].IsReadOnly = true;
                         dataGridVenda.Columns.Add(tot);
                     }
 
+                     
                 }
-                
+                totalDouble = 0;
+                if (count > 50) // não sei porque dá erro
                 foreach (DataRowView row in dataGridVenda.Items)
                 {
                         totalDouble += Double.Parse(row.Row.ItemArray[1].ToString());
@@ -269,8 +262,74 @@ namespace LojaDiscos
 
                 }
             }
+            count++;
+        }
 
+        
+        private void apagarTitulos(DataGrid dataGridVenda)
+        {
+            for (int i = 0; i < dataGridColumn.Length; i++)
+            {
+                dataGridVenda.Columns.Remove(dataGridColumn[i]);
+            }
+        }
 
+        private void criarTabela()
+        {
+            var workingWidth = 1300;// dataGridVenda.ActualWidth - SystemParameters.VerticalScrollBarWidth; // take into account vertical scrollbar
+            var col0 = 0.1;
+            var col1 = 0.4;
+            var col2 = 0.15;
+            var col3 = 0.15;
+            var col4 = 0.2;
+            
+            
+
+            for (int i = 0; i < dataGridColumn.Length; i++)
+            {
+                dataGridColumn[i] = new DataGridTextColumn();
+            }
+
+            dataGridColumn[0].Width = workingWidth * col0;
+            dataGridColumn[0].Header = "Código";
+            dataGridColumn[0].DisplayIndex = 0;
+            dataGridColumn[0].IsReadOnly = true;
+
+            dataGridColumn[1].Width = workingWidth * col2;
+            dataGridColumn[1].Header = "Preço";
+            dataGridColumn[1].DisplayIndex = 2;
+            dataGridColumn[1].IsReadOnly = true;
+
+            dataGridColumn[2].Visibility = Visibility.Hidden;
+
+            dataGridColumn[3].Width = workingWidth * col1;
+            dataGridColumn[3].Header = "Designação";
+            dataGridColumn[3].DisplayIndex = 1;
+            dataGridColumn[3].IsReadOnly = true;
+
+            dataGridColumn[4].Visibility = Visibility.Hidden;
+            dataGridColumn[5].Visibility = Visibility.Hidden;
+            dataGridColumn[6].Visibility = Visibility.Hidden;
+            dataGridColumn[7].Visibility = Visibility.Hidden;
+            dataGridColumn[8].Visibility = Visibility.Hidden;
+
+            dataGridColumn[9].Width = workingWidth * col3;
+            dataGridColumn[9].Header = "Quantidade";
+            dataGridColumn[9].DisplayIndex = 3;
+            dataGridColumn[9].IsReadOnly = false;
+
+            dataGridColumn[10].Width = workingWidth * col4;
+            dataGridColumn[10].Header = "Total";
+            dataGridColumn[10].DisplayIndex = 4;
+            dataGridColumn[10].IsReadOnly = true;
+
+            for (int i = 0; i < dataGridColumn.Length; i++)
+            {
+                dataGridVenda.Columns.Add(dataGridColumn[i]);
+            }
+
+            
+            
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -353,6 +412,18 @@ namespace LojaDiscos
             {
                 //concluirVenda_Click(sender, e);
             }
+        }
+
+        private void dataGridVenda_Initialized(object sender, EventArgs e)
+        {
+            criarTabela();
+        }
+
+        private void dataGridVenda_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            MessageBox.Show(dataGridVenda.Items.GetItemAt(0).ToString());
+               // quantidade não está a funcionar
+                //Cells[1].Text = "text";
         }
     }
 }
