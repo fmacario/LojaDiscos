@@ -34,19 +34,37 @@ namespace LojaDiscos
 
             using (SqlCommand cmd = new SqlCommand("InserirFornecedor", conn))
             {
+                int i;
 
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@nif", SqlDbType.Int).Value = nif2.Text;
-                cmd.Parameters.Add("@nome", SqlDbType.VarChar, 50).Value = nome2.Text;
-                cmd.Parameters.Add("@morada", SqlDbType.VarChar, 50).Value = morada2.Text;
-                cmd.Parameters.Add("@telefone", SqlDbType.Int).Value = nTel2.Text;
-                cmd.Parameters.Add("@email", SqlDbType.VarChar, 30).Value = email2.Text;
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                MessageBox.Show("Fornecedor adicionado com sucesso", "Sucesso!");
-                Menu menu = new Menu();
-                this.NavigationService.Navigate(menu);
+                if (nif2.Text.Length == 0)
+                    MessageBox.Show("Insira NIF.");
+                else if (!Int32.TryParse(nif2.Text, out i))
+                    MessageBox.Show("Formato de NIF inválido. Insira um NIF numérico válido.");
+                else if (nome2.Text.Length == 0)
+                    MessageBox.Show("Insira Nome.");
+                else if (morada2.Text.Length == 0)
+                    MessageBox.Show("Insira Morada.");
+                else if (email2.Text.Length == 0)
+                    MessageBox.Show("Insira E-mail.");
+                else if (nTel2.Text.Length == 0)
+                    MessageBox.Show("Insira Nº Telefone.");
+                else if (!Int32.TryParse(nTel2.Text, out i))
+                    MessageBox.Show("Formato de Nº Telefone inválido. Insira um Nº Telefone numérico válido.");
+                else
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@nif", SqlDbType.Int).Value = nif2.Text;
+                    cmd.Parameters.Add("@nome", SqlDbType.VarChar, 50).Value = nome2.Text;
+                    cmd.Parameters.Add("@morada", SqlDbType.VarChar, 50).Value = morada2.Text;
+                    cmd.Parameters.Add("@telefone", SqlDbType.Int).Value = nTel2.Text;
+                    cmd.Parameters.Add("@email", SqlDbType.VarChar, 30).Value = email2.Text;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    MessageBox.Show("Fornecedor adicionado com sucesso", "Sucesso!");
+                    CriarFichaFornecedor menu = new CriarFichaFornecedor();
+                    this.NavigationService.Navigate(menu);
+                }
             }
 
         }

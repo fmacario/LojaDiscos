@@ -25,6 +25,7 @@ namespace LojaDiscos
         Int32 nif_cliente = 0;
         int quantidade;
         string nif = "0";
+        Boolean teste = false;
 
         public Venda()
         {
@@ -77,44 +78,70 @@ namespace LojaDiscos
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@pesquisa", cliente.Text);
-                    nif_cliente = Int32.Parse(cmd.Parameters["@pesquisa"].Value.ToString());
+                    teste = Int32.TryParse(cmd.Parameters["@pesquisa"].Value.ToString(), out nif_cliente);
                 }
                 else {
                     nif_cliente = Int32.Parse(nif);
                     cliente.Text = nif;
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@pesquisa", cliente.Text);
+                    teste = true;
                 }
 
+                if (teste) { 
+                    cmd.Parameters.Add("@nome", SqlDbType.VarChar, 50);
+                    cmd.Parameters["@nome"].Direction = ParameterDirection.Output;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
 
-                cmd.Parameters.Add("@nome", SqlDbType.VarChar, 50);
-                cmd.Parameters["@nome"].Direction = ParameterDirection.Output;
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-
-                if (cmd.Parameters["@nome"].Value.ToString() != "")
-                {
-                    cliente.Text = cmd.Parameters["@nome"].Value.ToString();
-                }
-                /*else
-                {
-                    if (MessageBox.Show("NIF não encontrado. Deseja adicionar novo cliente?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                    if (cmd.Parameters["@nome"].Value.ToString() != "")
                     {
-                        //do no stuff
-                        Venda contin = new Venda();
-                        this.NavigationService.Navigate(contin);
-
+                        MessageBox.Show(nomeDoCliente.Text);
+                        nomeDoCliente.Text = cmd.Parameters["@nome"].Value.ToString();
+                        MessageBox.Show(nomeDoCliente.Text);
+                        nomeDoCliente.Visibility = Visibility.Visible;
+                        cliente.Visibility = Visibility.Hidden;
+                        clienteNome.Text = "Nome: ";
+                        novaPesquisa.Visibility = Visibility.Visible;
+                        addCliente.Visibility = Visibility.Hidden;
                     }
                     else
                     {
-                        //do yes stuff
-                        CriarFichaCliente newcliente = new CriarFichaCliente();
-                        this.NavigationService.Navigate(newcliente);
-                    }
+                        if (MessageBox.Show("NIF não encontrado. Deseja adicionar novo cliente?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                        {
+                            //do no stuff
+                            Venda contin = new Venda();
+                            this.NavigationService.Navigate(contin);
 
-                }*/
+                        }
+                        else
+                        {
+                            //do yes stuff
+                            CriarFichaCliente newcliente = new CriarFichaCliente("Venda", nif_cliente.ToString());
+                            this.NavigationService.Navigate(newcliente);
+                        }
+
+                    }
+                    
+                }
+                else if (!teste)
+                {
+                    MessageBox.Show("Formato inválido. Insira um NIF válido");
+                }
+               
             }
+        }
+
+        private void novaPesquisa_Click(object sender, RoutedEventArgs e)
+        {
+            novaPesquisa.Visibility = Visibility.Hidden;
+            cliente.Visibility = Visibility.Visible;
+            pesquisa.Visibility = Visibility.Visible;
+            clienteNome.Text = "NIF Cliente: ";
+            nomeDoCliente.Visibility = Visibility.Hidden;
+            addCliente.Visibility = Visibility.Visible;
+
         }
         private void pesquisa_Click(object sender, RoutedEventArgs e)
         {
@@ -153,8 +180,8 @@ namespace LojaDiscos
                 conn.Close();
 
                 MessageBox.Show("Venda Efectuada", "Sucesso!");
-                Menu menu = new Menu();
-                this.NavigationService.Navigate(menu);
+                Venda venda = new Venda();
+                this.NavigationService.Navigate(venda);
             }
 
         }
@@ -298,6 +325,20 @@ namespace LojaDiscos
         {
             CriarDisco criarDisco = new CriarDisco();
             this.NavigationService.Navigate(criarDisco);
+        }
+
+        private void cliente_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            pesquisa.Visibility = Visibility.Visible;
+        }
+
+
+        private void cliente_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                //concluirVenda_Click(sender, e);
+            }
         }
     }
 }

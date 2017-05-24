@@ -58,34 +58,63 @@ namespace LojaDiscos
             
             using (SqlCommand cmd = new SqlCommand("InserirDisco", conn))
             {
+                int i;
+                double d;
 
-                cmd.CommandType = CommandType.StoredProcedure;
+                if (codigo2.Text.Length == 0)
+                    MessageBox.Show("Insira Código.");
+                else if (!Int32.TryParse(codigo2.Text, out i))
+                    MessageBox.Show("Formato de Código inválido. Insira um Código numérico válido.");
+                else if (album2.Text.Length == 0)
+                    MessageBox.Show("Insira nome do Álbum.");
+                else if (preço1.Text.Length == 0)
+                    MessageBox.Show("Insira Preço.");
+                else if (!Double.TryParse(preço1.Text, out d))
+                    MessageBox.Show("Formato de Preço inválido. Insira um Preço válido (xx,yy).");
+                else if (ano2.Text.Length == 0)
+                    MessageBox.Show("Insira Ano.");
+                else if (!Int32.TryParse(ano2.Text, out i))
+                    MessageBox.Show("Formato de Ano inválido. Insira um Ano válido.");
+                else if (GeneroCB.Text != null)
+                    MessageBox.Show("Escolha o Género.");
+                else if (TipoCB.Text != null)
+                    MessageBox.Show("Escolha o Tipo.");
+                else if (artista2.Text.Length == 0)
+                    MessageBox.Show("Insira nome do Artista.");
+                else if (unidades2.Text.Length == 0)
+                    MessageBox.Show("Insira Unidades.");
+                else if (!Int32.TryParse(unidades2.Text, out i))
+                    MessageBox.Show("Formato de Unidades inválido. Insira Unidades numéricas válidas.");
+                else { 
+                    
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add("@id_disco", SqlDbType.Int).Value = codigo2.Text;
-                cmd.Parameters.Add("@titulo", SqlDbType.VarChar, 30).Value = album2.Text;
-                cmd.Parameters.Add("@preço", SqlDbType.Money).Value = preço1.Text;
-                cmd.Parameters.Add("@ano", SqlDbType.Int).Value = ano2.Text;
-                cmd.Parameters.Add("@stock", SqlDbType.Int).Value = unidades2.Text;
-                cmd.Parameters.Add("@genero", SqlDbType.VarChar, 30).Value = GeneroCB.Text;
-                cmd.Parameters.Add("@tipo", SqlDbType.VarChar, 30).Value = TipoCB.Text;
-                cmd.Parameters.Add("@artista", SqlDbType.VarChar, 30).Value = artista2.Text;
+                    cmd.Parameters.Add("@id_disco", SqlDbType.Int).Value = codigo2.Text;
+                    cmd.Parameters.Add("@titulo", SqlDbType.VarChar, 30).Value = album2.Text;
+                    cmd.Parameters.Add("@preço", SqlDbType.Money).Value = preço1.Text;
+                    cmd.Parameters.Add("@ano", SqlDbType.Int).Value = ano2.Text;
+                    cmd.Parameters.Add("@stock", SqlDbType.Int).Value = unidades2.Text;
+                    cmd.Parameters.Add("@genero", SqlDbType.VarChar, 30).Value = GeneroCB.Text;
+                    cmd.Parameters.Add("@tipo", SqlDbType.VarChar, 30).Value = TipoCB.Text;
+                    cmd.Parameters.Add("@artista", SqlDbType.VarChar, 30).Value = artista2.Text;
 
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
 
 
-                //actualizar  stocks
-                SqlCommand c = new SqlCommand("atualizarStock", conn);
-                c.CommandType = CommandType.StoredProcedure;
-                c.Parameters.AddWithValue("@id_disco", codigo2.Text);
-                c.Parameters.AddWithValue("@update", unidades2.Text);
-                conn.Open();
-                c.ExecuteNonQuery();
-                conn.Close();
-                MessageBox.Show("Disco inserido com sucesso", "Sucesso!");
-                Menu menu = new Menu();
-                this.NavigationService.Navigate(menu);
+                    //actualizar  stocks
+                    SqlCommand c = new SqlCommand("atualizarStock", conn);
+                    c.CommandType = CommandType.StoredProcedure;
+                    c.Parameters.AddWithValue("@id_disco", codigo2.Text);
+                    c.Parameters.AddWithValue("@update", unidades2.Text);
+                    conn.Open();
+                    c.ExecuteNonQuery();
+                    conn.Close();
+                    MessageBox.Show("Disco inserido com sucesso", "Sucesso!");
+                    Menu menu = new Menu();
+                    this.NavigationService.Navigate(menu);
+                }
 
             }
 
@@ -119,6 +148,7 @@ namespace LojaDiscos
                 imgPhoto.Source = new BitmapImage(new Uri(op.FileName));
             }
 
+            btnLoad.Content = "Alterar Capa";
         }
 
         private void adicionarDisco_Click(object sender, RoutedEventArgs e)

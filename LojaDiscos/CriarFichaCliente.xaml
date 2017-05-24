@@ -29,7 +29,7 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-
+        <Frame x:Name="_mainFrame" />
         <TextBlock Style="{StaticResource textBlock}" x:Name="nif" Text="NIF" FontSize="20" Grid.Column="1" Grid.Row="2"/>
         <TextBox Style="{StaticResource textBox}" x:Name="nif2" FontSize="17" Grid.Column="2" Grid.Row="2" Height="30" VerticalAlignment="Top" Margin="50,0,10,0" MaxLength="9"/>
         <TextBlock Style="{StaticResource textBlock}" x:Name="nome" Text="Nome" FontSize="20" Grid.Column="1" Grid.Row="3"/>
@@ -41,7 +41,9 @@
         <TextBlock Style="{StaticResource textBlock}" x:Name="nTel" Text="Nº Telefone" FontSize="20" Grid.Column="1" Grid.Row="6"/>
         <TextBox Style="{StaticResource textBox}" x:Name="nTel2" FontSize="17" Grid.Column="2" Grid.Row="6"  Height="30" VerticalAlignment="Top" MaxLength="9" Margin="50,0,10,0"/>
 
-        <Button Style="{StaticResource botoes}" x:Name="criarCliente" Content="Criar Cliente" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="8" Margin="0,0,10,10" HorizontalAlignment="Right" MinWidth="100" MaxHeight="75" Click="criarCliente_Click"/>
+        <Button Style="{StaticResource botoes}" x:Name="criarCliente" Content="Criar Cliente" Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="8" Margin="0,0,130,10" HorizontalAlignment="Right" MinWidth="100" MaxHeight="75" Click="criarCliente_Click"/>
+        <Button Style="{StaticResource botoes}" x:Name="back" Content="Voltar" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="8" Margin="0,0,10,10" HorizontalAlignment="Right" MinWidth="100" MaxHeight="75" Visibility="Hidden"/>
+
 
         <DockPanel Height="20" Grid.ColumnSpan="6">
             <Menu Style="{StaticResource menu}" DockPanel.Dock="Top">
