@@ -75,10 +75,10 @@ namespace LojaDiscos
                     MessageBox.Show("Insira Ano.");
                 else if (!Int32.TryParse(ano2.Text, out i))
                     MessageBox.Show("Formato de Ano inválido. Insira um Ano válido.");
-                else if (GeneroCB.Text != null)
-                    MessageBox.Show("Escolha o Género.");
-                else if (TipoCB.Text != null)
-                    MessageBox.Show("Escolha o Tipo.");
+                //else if (GeneroCB.Text != null)
+                  //  MessageBox.Show("Escolha o Género.");
+                //else if (TipoCB.Text != null)
+                  //  MessageBox.Show("Escolha o Tipo.");
                 else if (artista2.Text.Length == 0)
                     MessageBox.Show("Insira nome do Artista.");
                 else if (unidades2.Text.Length == 0)

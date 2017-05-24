@@ -26,6 +26,8 @@ namespace LojaDiscos
         int quantidade;
         string nif = "0";
         Boolean teste = false;
+        double totalDouble = 0;
+        DataTable dt = new DataTable();
 
         public Venda()
         {
@@ -204,33 +206,32 @@ namespace LojaDiscos
                     adapter.Fill(dt);
                     dataGridVenda.ItemsSource = dt.DefaultView;
                     
-                    
-                        var workingWidth = dataGridVenda.ActualWidth - SystemParameters.VerticalScrollBarWidth; // take into account vertical scrollbar
-                        var col0 = 0.1;
-                        var col1 = 0.4;
-                        var col2 = 0.15;
-                        var col3 = 0.15;
-                        var col4 = 0.2;
+                    var workingWidth = dataGridVenda.ActualWidth - SystemParameters.VerticalScrollBarWidth; // take into account vertical scrollbar
+                    var col0 = 0.1;
+                    var col1 = 0.4;
+                    var col2 = 0.15;
+                    var col3 = 0.15;
+                    var col4 = 0.2;
 
-                        dataGridVenda.Columns[0].Width = workingWidth * col0;
-                        dataGridVenda.Columns[0].Header = "Código";
-                        dataGridVenda.Columns[0].DisplayIndex = 0;
+                    dataGridVenda.Columns[0].Width = workingWidth * col0;
+                    dataGridVenda.Columns[0].Header = "Código";
+                    dataGridVenda.Columns[0].DisplayIndex = 0;
 
-                        dataGridVenda.Columns[1].Width = workingWidth * col2;
-                        dataGridVenda.Columns[1].Header = "Preço";
-                        dataGridVenda.Columns[1].DisplayIndex = 2;
+                    dataGridVenda.Columns[1].Width = workingWidth * col2;
+                    dataGridVenda.Columns[1].Header = "Preço";
+                    dataGridVenda.Columns[1].DisplayIndex = 2;
 
-                        dataGridVenda.Columns[2].Visibility = Visibility.Hidden;
+                    dataGridVenda.Columns[2].Visibility = Visibility.Hidden;
 
-                        dataGridVenda.Columns[3].Width = workingWidth * col1;
-                        dataGridVenda.Columns[3].Header = "Designação";
-                        dataGridVenda.Columns[3].DisplayIndex = 1;
+                    dataGridVenda.Columns[3].Width = workingWidth * col1;
+                    dataGridVenda.Columns[3].Header = "Designação";
+                    dataGridVenda.Columns[3].DisplayIndex = 1;
 
-                        dataGridVenda.Columns[4].Visibility = Visibility.Hidden;
-                        dataGridVenda.Columns[5].Visibility = Visibility.Hidden;
-                        dataGridVenda.Columns[6].Visibility = Visibility.Hidden;
-                        dataGridVenda.Columns[7].Visibility = Visibility.Hidden;
-                        dataGridVenda.Columns[8].Visibility = Visibility.Hidden;
+                    dataGridVenda.Columns[4].Visibility = Visibility.Hidden;
+                    dataGridVenda.Columns[5].Visibility = Visibility.Hidden;
+                    dataGridVenda.Columns[6].Visibility = Visibility.Hidden;
+                    dataGridVenda.Columns[7].Visibility = Visibility.Hidden;
+                    dataGridVenda.Columns[8].Visibility = Visibility.Hidden;
 
                     if (quantidade == 1)
                     {
@@ -252,7 +253,20 @@ namespace LojaDiscos
                 
                 foreach (DataRowView row in dataGridVenda.Items)
                 {
-                    totalE.Text = row.Row.ItemArray[1].ToString();
+                        totalDouble += Double.Parse(row.Row.ItemArray[1].ToString());
+                    if (totalDouble.ToString().Length >= 5)
+                        totalE.Text = totalDouble.ToString().Substring(0, 5) + " €";
+                    else if (totalDouble.ToString().Length == 4)
+                        totalE.Text = totalDouble.ToString().Substring(0, 4) + "0 €";
+                    else if (totalDouble.ToString().Length == 3)
+                        totalE.Text = totalDouble.ToString().Substring(0, 3) + "00 €";
+                    else if (totalDouble.ToString().Length == 2)
+                        totalE.Text = totalDouble.ToString().Substring(0, 2) + ",00 €";
+                    else if (totalDouble.ToString().Equals("0"))
+                        totalE.Text = totalDouble.ToString().Substring(0, 1) + "0,00 €";
+                    else if (totalDouble.ToString().Length == 1)
+                        totalE.Text = totalDouble.ToString().Substring(0, 1) + ",00 €";
+
                 }
             }
 
