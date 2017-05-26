@@ -30,7 +30,6 @@ namespace LojaDiscos
         DataTable dt = new DataTable();
         int count = 0;
         DataGridTextColumn[] dataGridColumn = new DataGridTextColumn[11];
-        DataGridTextColumn tot = new DataGridTextColumn();
 
         public Venda()
         {
@@ -213,11 +212,7 @@ namespace LojaDiscos
                     dataGridVenda.Columns[1].DisplayIndex = 2;
                     dataGridVenda.Columns[1].IsReadOnly = true;
 
-                    // stock -> transformada em quantidade
-                    dataGridVenda.Columns[2].Header = "Quantidade";
-                    dataGridVenda.Columns[2].IsReadOnly = false;
-                    dataGridVenda.Columns[2].Width = workingWidth * col3;
-                    dataGridVenda.Columns[2].DisplayIndex = 3;
+                    dataGridVenda.Columns[2].Visibility = Visibility.Hidden;
 
                     dataGridVenda.Columns[3].Width = workingWidth * col1;
                     dataGridVenda.Columns[3].Header = "Designação";
@@ -232,31 +227,22 @@ namespace LojaDiscos
 
                     if (quantidade == 1)
                     {
-                        /*DataGridTextColumn qtd = new DataGridTextColumn();
+                        DataGridTextColumn qtd = new DataGridTextColumn();
                         qtd.Header = "Quantidade";
                         qtd.IsReadOnly = false;
                         qtd.Width = workingWidth * col3;
-                        dataGridVenda.Columns.Add(qtd);*/
-
+                        dataGridVenda.Columns.Add(qtd);
                         
+                        DataGridTextColumn tot = new DataGridTextColumn();
                         tot.Header = "Preço Total";
                         tot.Width = workingWidth * col4;
                         dataGridVenda.Columns[5].IsReadOnly = true;
-                        tot.Binding = new Binding("PrecoTotal");
                         dataGridVenda.Columns.Add(tot);
-                       
                     }
-                    /*
-                    dataGridVenda.Items.Add(new Item()
-                    {
-                        PrecoTotal = 2
-                    });
-                    */  // não funciona
+
+                     
                 }
-                
                 totalDouble = 0;
-
-
                 if (count > 50) // não sei porque dá erro
                 foreach (DataRowView row in dataGridVenda.Items)
                 {
@@ -279,11 +265,7 @@ namespace LojaDiscos
             count++;
         }
 
-        public class Item
-        {
-            public int PrecoTotal { get; set; }
-        }
-
+        
         private void apagarTitulos(DataGrid dataGridVenda)
         {
             for (int i = 0; i < dataGridColumn.Length; i++)
