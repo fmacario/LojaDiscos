@@ -79,9 +79,9 @@ namespace LojaDiscos
 
                     if (cmd.Parameters["@nome"].Value.ToString() != "")
                     {
-                        MessageBox.Show(nomeDoCliente.Text);
+                        //MessageBox.Show(nomeDoCliente.Text);
                         nomeDoCliente.Text = cmd.Parameters["@nome"].Value.ToString();
-                        MessageBox.Show(nomeDoCliente.Text);
+                        //MessageBox.Show(nomeDoCliente.Text);
                         nomeDoCliente.Visibility = Visibility.Visible;
                         cliente.Visibility = Visibility.Hidden;
                         clienteNome.Text = "Nome: ";
@@ -183,7 +183,7 @@ namespace LojaDiscos
                 using (SqlDataAdapter adapter = new SqlDataAdapter(com))
                 {
                     //DataTable dt = new DataTable();
-                    MessageBox.Show(adapter.ToString());
+                    //MessageBox.Show(adapter.ToString());
                     adapter.Fill(dt);
                     dataGridVenda.ItemsSource = dt.DefaultView;
                     
@@ -418,7 +418,7 @@ namespace LojaDiscos
 
         private void dataGridVenda_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            MessageBox.Show(dataGridVenda.Items.GetItemAt(0).ToString());
+            //MessageBox.Show(dataGridVenda.Items.GetItemAt(0).ToString());
                // quantidade não está a funcionar
                 //Cells[1].Text = "text";
         }
