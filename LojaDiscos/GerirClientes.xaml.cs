@@ -59,7 +59,8 @@ namespace LojaDiscos
             using (SqlConnection sc = ConnectionHelper.GetConnection())
             {
                 sc.Open();
-                string sql = "Select * FROM Pessoa As P JOIN Cliente As C ON P.nif = C.nif WHERE [nif]= @nif";
+                //string sql = "Select * FROM Pessoa As P JOIN Cliente As C ON P.nif = C.nif WHERE [nif]= @nif";
+                string sql = "Select * FROM Pessoa WHERE [nif]= @nif";
                 SqlCommand com = new SqlCommand(sql, sc);
                 com.Parameters.AddWithValue("@nif", nif_pesq.Text);
 

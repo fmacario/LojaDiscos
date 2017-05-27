@@ -72,5 +72,7 @@ namespace LojaDiscos
             CriarDisco criarDisco = new CriarDisco();
             this.NavigationService.Navigate(criarDisco);
         }
+
+        
     }
 }

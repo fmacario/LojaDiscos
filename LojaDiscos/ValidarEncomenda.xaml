@@ -5,8 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LojaDiscos"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      WindowTitle="Validar Encomenda">
+      d:DesignHeight="500" d:DesignWidth="500"
+      WindowTitle="Validar Encomenda"
+      Style="{StaticResource MyWindowStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -30,5 +31,13 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="25,134,0,-381" VerticalAlignment="Top" RenderTransformOrigin="5.865,7.137" Height="326" Width="445">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Style="{StaticResource botoes}" x:Name="pesquisa" Content="Selecionar" Margin="171,88,0,-34" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="101"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Right" Margin="0,88,355,-32" VerticalAlignment="Top" Width="120"/>
+
     </Grid>
 </Page>
