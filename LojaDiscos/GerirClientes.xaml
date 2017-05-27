@@ -18,25 +18,32 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>  
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="494.5"/>
+            <RowDefinition Height="46.5"/>
+            <RowDefinition Height="4.5"/>
+            <RowDefinition/>
             <RowDefinition Height="auto"/>
 
 
         </Grid.RowDefinitions>
 
-        <Button Style="{StaticResource botoes}" x:Name="pesquisar" Content="Pesquisar" Grid.Row="1" Grid.Column="3" Height="30" Click="pesquisar_Click"/>
-        <TextBox Style="{StaticResource textBox}" x:Name="nif_pesq" Text="NIF cliente" Grid.Row="1" Grid.ColumnSpan="2" Height="23" Margin="20,22,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="155"/>
+        <Button Style="{StaticResource botoes}" x:Name="pesquisar" Content="Pesquisar" Grid.Row="1" Grid.Column="3" Height="30" Click="pesquisar_Click" Margin="0,16,0,448.5"/>
+        <TextBox Style="{StaticResource textBox}" x:Name="nif_pesq" Text="NIF cliente" Grid.Row="1" Grid.ColumnSpan="2" Height="23" Margin="53,22,33,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="155"/>
 
-        <Button Style="{StaticResource botoes}" x:Name="criarFichaCliente" Content="Novo Cliente" Grid.Row="3" Grid.Column="2" Margin="0,0,0,10" MinWidth="100" MinHeight="45" Click="criarFichaCliente_Click"/>
+        <Button Style="{StaticResource botoes}" x:Name="criarFichaCliente" Content="Novo Cliente" Grid.Row="1" Grid.Column="3" Margin="22,412,97,37" MinWidth="100" MinHeight="45" Click="criarFichaCliente_Click" Grid.ColumnSpan="2"/>
+        <Button Style="{StaticResource botoes}" x:Name="Editar" Content="Editar Cliente" Grid.Row="1" Grid.Column="1" Margin="22,412,97,37" MinWidth="100" MinHeight="45"  Grid.ColumnSpan="2" Visibility="Hidden"  Click="Editar_Click"/>
 
-        <DataGrid Style="{StaticResource dataGrid}" x:Name="dataGrid" IsReadOnly="True" ItemsSource="{Binding}" Grid.ColumnSpan="5" Grid.Row="2" Margin="20,50,20,50" MinHeight="300" Height="auto" ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" SizeChanged="dataGrid_SizeChanged">
+        <DataGrid Style="{StaticResource dataGrid}" x:Name="dataGrid" IsReadOnly="True" ItemsSource="{Binding}" Grid.ColumnSpan="5" Grid.Row="1" Margin="10,65,0,0" MinHeight="300" Height="181" ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" SizeChanged="dataGrid_SizeChanged" VerticalAlignment="Top" HorizontalAlignment="Left" Width="583" MouseLeftButtonUp="dataGrid_MouseLeftButtonUp">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="Background" Value="#00bf8c" />
                     <Setter Property="FontSize" Value="15" />
                     <Setter Property="FontWeight" Value="Bold" />
+                </Style>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                    
                 </Style>
             </DataGrid.Resources>
         </DataGrid>

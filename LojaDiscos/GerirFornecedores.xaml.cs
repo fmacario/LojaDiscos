@@ -53,6 +53,43 @@ namespace LojaDiscos
             }
         }
 
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DataGridRow row = sender as DataGridRow;
+            // Some operations with this row
+
+            AlterarFornecedor alt = new AlterarFornecedor();
+            this.NavigationService.Navigate(alt);
+
+
+            DataRowView rowview = dataGrid.SelectedItem as DataRowView;
+            alt.nif2.Text = rowview.Row[0].ToString();
+            alt.nome2.Text = rowview.Row[1].ToString();
+            alt.nTel2.Text = rowview.Row[2].ToString();
+            alt.morada2.Text = rowview.Row[3].ToString();
+            alt.email2.Text = rowview.Row[4].ToString(); ;
+
+
+
+        }
+        private void dataGrid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Editar.Visibility = Visibility.Visible;
+        }
+
+        private void Editar_Click(object sender, RoutedEventArgs e)
+        {
+            AlterarFornecedor alt = new AlterarFornecedor();
+            this.NavigationService.Navigate(alt);
+            DataRowView rowview = dataGrid.SelectedItem as DataRowView;
+            alt.nif2.Text = rowview.Row[0].ToString();
+            alt.nome2.Text = rowview.Row[1].ToString();
+            alt.nTel2.Text = rowview.Row[2].ToString();
+            alt.morada2.Text = rowview.Row[3].ToString();
+            alt.email2.Text = rowview.Row[4].ToString();
+        }
+
+       
 
         private void criarFichaFornecedor_Click(object sender, RoutedEventArgs e)
         {
@@ -155,5 +192,7 @@ namespace LojaDiscos
             CriarDisco criarDisco = new CriarDisco();
             this.NavigationService.Navigate(criarDisco);
         }
+
+      
     }
 }

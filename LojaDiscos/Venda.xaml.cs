@@ -203,10 +203,7 @@ namespace LojaDiscos
                     dataGridVenda.Columns[0].DisplayIndex = 0;
                     dataGridVenda.Columns[0].IsReadOnly = true;
 
-                    
-
-                    
-
+           
                     dataGridVenda.Columns[1].Width = workingWidth * col2;
                     dataGridVenda.Columns[1].Header = "Preço";
                     dataGridVenda.Columns[1].DisplayIndex = 2;

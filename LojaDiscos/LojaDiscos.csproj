@@ -56,6 +56,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AlterarCliente.xaml.cs">
+      <DependentUpon>AlterarCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AlterarFornecedor.xaml.cs">
+      <DependentUpon>AlterarFornecedor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CriarDisco.xaml.cs">
       <DependentUpon>CriarDisco.xaml</DependentUpon>
     </Compile>
@@ -100,6 +106,14 @@
     <Compile Include="Venda.xaml.cs">
       <DependentUpon>Venda.xaml</DependentUpon>
     </Compile>
+    <Page Include="AlterarCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AlterarFornecedor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CriarDisco.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

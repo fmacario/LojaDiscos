@@ -70,35 +70,77 @@ namespace LojaDiscos
                     adapter.Fill(dt);
                     dataGrid.ItemsSource = dt.DefaultView;
                 }
-
+             
             }
         }
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DataGridRow row = sender as DataGridRow;
+            // Some operations with this row
+           
+            AlterarCliente alterarCliente_ = new AlterarCliente();
+            this.NavigationService.Navigate(alterarCliente_);
+
+            
+            DataRowView rowview = dataGrid.SelectedItem as DataRowView;
+            alterarCliente_.nif2.Text = rowview.Row[0].ToString();
+            alterarCliente_.nome2.Text = rowview.Row[1].ToString();
+            alterarCliente_.nTel2.Text = rowview.Row[2].ToString();
+            alterarCliente_.morada2.Text = rowview.Row[3].ToString();
+            alterarCliente_.email2.Text = rowview.Row[4].ToString(); ;
+       
+
+
+        }
+        private void dataGrid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Editar.Visibility = Visibility.Visible;
+        }
+
+        private void Editar_Click(object sender, MouseButtonEventArgs e)
+        {
+            AlterarCliente alterarCliente_ = new AlterarCliente();
+            this.NavigationService.Navigate(alterarCliente_);
+            DataRowView rowview = dataGrid.SelectedItem as DataRowView;
+            alterarCliente_.nif2.Text = rowview.Row[0].ToString();
+            alterarCliente_.nome2.Text = rowview.Row[1].ToString();
+            alterarCliente_.nTel2.Text = rowview.Row[2].ToString();
+            alterarCliente_.morada2.Text = rowview.Row[3].ToString();
+            alterarCliente_.email2.Text = rowview.Row[4].ToString();
+        }
+
         private void criarFichaCliente_Click(object sender, RoutedEventArgs e)
         {
             CriarFichaCliente criarFichaCliente = new CriarFichaCliente();
             this.NavigationService.Navigate(criarFichaCliente);
         }
 
-       /* private void listView_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void Editar_Click(object sender, RoutedEventArgs e)
         {
-            ListView listView = sender as ListView;
-            GridView gView = listView.View as GridView;
+            AlterarCliente alterarCliente_ = new AlterarCliente();
+            this.NavigationService.Navigate(alterarCliente_);
+        }
 
-            var workingWidth = listView.ActualWidth - SystemParameters.VerticalScrollBarWidth; // take into account vertical scrollbar
-            var col1 = 0.1;
-            var col2 = 0.3;
-            var col3 = 0.3;
-            var col4 = 0.1;
-            var col5 = 0.1;
-            var col6 = 0.1;
+        /* private void listView_SizeChanged(object sender, SizeChangedEventArgs e)
+         {
+             ListView listView = sender as ListView;
+             GridView gView = listView.View as GridView;
 
-            gView.Columns[0].Width = workingWidth * col1;
-            gView.Columns[1].Width = workingWidth * col2;
-            gView.Columns[2].Width = workingWidth * col3;
-            gView.Columns[3].Width = workingWidth * col4;
-            gView.Columns[4].Width = workingWidth * col5;
-            gView.Columns[5].Width = workingWidth * col6;
-        }*/
+             var workingWidth = listView.ActualWidth - SystemParameters.VerticalScrollBarWidth; // take into account vertical scrollbar
+             var col1 = 0.1;
+             var col2 = 0.3;
+             var col3 = 0.3;
+             var col4 = 0.1;
+             var col5 = 0.1;
+             var col6 = 0.1;
+
+             gView.Columns[0].Width = workingWidth * col1;
+             gView.Columns[1].Width = workingWidth * col2;
+             gView.Columns[2].Width = workingWidth * col3;
+             gView.Columns[3].Width = workingWidth * col4;
+             gView.Columns[4].Width = workingWidth * col5;
+             gView.Columns[5].Width = workingWidth * col6;
+         }*/
 
         private void pesquisar_Click(object sender, RoutedEventArgs e)
         {
@@ -178,5 +220,6 @@ namespace LojaDiscos
             CriarDisco criarDisco = new CriarDisco();
             this.NavigationService.Navigate(criarDisco);
         }
+
     }
 }
