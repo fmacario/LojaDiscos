@@ -131,11 +131,17 @@ namespace LojaDiscos
                     */
 
                     Label artista = new Label();
+                    artista.Foreground = Brushes.White;
                     Label titulo = new Label();
+                    titulo.Foreground = Brushes.White;
                     Label ano = new Label();
+                    ano.Foreground = Brushes.White;
                     Label genero = new Label();
+                    genero.Foreground = Brushes.White;
                     Label preço = new Label();
+                    preço.Foreground = Brushes.White;
                     Label stock = new Label();
+                    stock.Foreground = Brushes.White;
 
                     artista.Content = cmd.Parameters["@artista"].Value.ToString() + ":";
                     titulo.Content = cmd.Parameters["@titulo"].Value.ToString();
@@ -219,11 +225,17 @@ namespace LojaDiscos
                     */
 
                     Label artista = new Label();
+                    artista.Foreground = Brushes.White;
                     Label titulo = new Label();
+                    titulo.Foreground = Brushes.White;
                     Label ano = new Label();
+                    ano.Foreground = Brushes.White;
                     Label genero = new Label();
+                    genero.Foreground = Brushes.White;
                     Label preço = new Label();
+                    preço.Foreground = Brushes.White;
                     Label stock = new Label();
+                    stock.Foreground = Brushes.White;
 
                     artista.Content = cmd.Parameters["@artista"].Value.ToString() + ":";
                     titulo.Content = cmd.Parameters["@titulo"].Value.ToString();
