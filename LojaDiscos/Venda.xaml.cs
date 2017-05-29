@@ -397,6 +397,18 @@ namespace LojaDiscos
             this.NavigationService.Navigate(criarDisco);
         }
 
+        private void criarFichaFornecedor_Click(object sender, RoutedEventArgs e)
+        {
+            CriarFichaFornecedor criarFichaFornecedor = new CriarFichaFornecedor();
+            this.NavigationService.Navigate(criarFichaFornecedor);
+        }
+
+        private void criarFichaCliente_Click(object sender, RoutedEventArgs e)
+        {
+            CriarFichaCliente criarFichaCliente = new CriarFichaCliente();
+            this.NavigationService.Navigate(criarFichaCliente);
+        }
+
         private void cliente_TextChanged(object sender, TextChangedEventArgs e)
         {
             pesquisa.Visibility = Visibility.Visible;
@@ -422,5 +434,7 @@ namespace LojaDiscos
                // quantidade não está a funcionar
                 //Cells[1].Text = "text";
         }
+
+
     }
 }

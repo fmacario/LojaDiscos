@@ -111,7 +111,7 @@ namespace LojaDiscos
         {
             DataGridRow row = sender as DataGridRow;
             // Some operations with this row
-            MessageBox.Show(row.ToString());
+            //MessageBox.Show(row.ToString());
             AlterarCliente alterarCliente_ = new AlterarCliente();
             this.NavigationService.Navigate(alterarCliente_);
 
@@ -132,7 +132,7 @@ namespace LojaDiscos
             Editar.Visibility = Visibility.Visible;
         }
 
-        private void Editar_Click(object sender, MouseButtonEventArgs e)
+        private void Editar_Click(object sender, RoutedEventArgs e)
         {
             AlterarCliente alterarCliente_ = new AlterarCliente();
             this.NavigationService.Navigate(alterarCliente_);
@@ -144,17 +144,14 @@ namespace LojaDiscos
             alterarCliente_.email2.Text = rowview.Row[4].ToString();
         }
 
+
+
         private void criarFichaCliente_Click(object sender, RoutedEventArgs e)
         {
             CriarFichaCliente criarFichaCliente = new CriarFichaCliente();
             this.NavigationService.Navigate(criarFichaCliente);
         }
 
-        private void Editar_Click(object sender, RoutedEventArgs e)
-        {
-            AlterarCliente alterarCliente_ = new AlterarCliente();
-            this.NavigationService.Navigate(alterarCliente_);
-        }
 
         /* private void listView_SizeChanged(object sender, SizeChangedEventArgs e)
          {
@@ -271,6 +268,14 @@ namespace LojaDiscos
             CriarDisco criarDisco = new CriarDisco();
             this.NavigationService.Navigate(criarDisco);
         }
+
+        private void criarFichaFornecedor_Click(object sender, RoutedEventArgs e)
+        {
+            CriarFichaFornecedor criarFichaFornecedor = new CriarFichaFornecedor();
+            this.NavigationService.Navigate(criarFichaFornecedor);
+        }
+
+        
 
     }
 }

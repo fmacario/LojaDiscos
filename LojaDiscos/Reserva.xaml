@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:LojaDiscos"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
+       Style="{StaticResource MyWindowStyle}"
       WindowTitle="Reserva">
 
     <Grid>
@@ -19,81 +20,93 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition />
-            <RowDefinition Height="auto"/>
-            <RowDefinition />
+            <RowDefinition Height="auto" MaxHeight="400"/>
+            
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <TextBlock x:Name="clienteNome" Text="Cliente: " Grid.Row="1" Grid.Column="1"/>
+        <TextBlock Style="{StaticResource textBlock}" FontSize="30" x:Name="clienteNome" Text="NIF Cliente: " VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
+        <TextBox Style="{StaticResource textBox}" x:Name="cliente" VerticalAlignment="Center" Grid.Column="2" Grid.Row="1" Height="30" FontSize="20" TextChanged="cliente_TextChanged" KeyDown="cliente_KeyDown" />
+        <TextBlock Style="{StaticResource textBlock}" FontSize="20" x:Name="nomeDoCliente" VerticalAlignment="Center" Grid.Column="2" Grid.Row="1" Visibility="Hidden"/>
+        <Button Style="{StaticResource botoes}" x:Name="pesquisa" Content="Pesquisa" Grid.Column="3" Grid.Row="1" Click="pesquisa_Click" Height="30" Margin="50,0" Visibility="Hidden"/>
+        <Button Style="{StaticResource botoes}" x:Name="novaPesquisa" Content="Alterar Cliente" Grid.Column="3" Grid.Row="1" Click="novaPesquisa_Click" Height="30" Margin="50,0" Visibility="Hidden"/>
+        <Button Style="{StaticResource botoes}" x:Name="addCliente" Content="+ Nova ficha de cliente" Grid.Column="4" Grid.Row="1" Click="addCliente_Click" Height="30" Margin="50,0"/>
 
-
-        <ListView x:Name="listView" Height="500" Width="1000" Grid.ColumnSpan="5" Grid.Row="2">
-            <ListView.View>
-                <GridView>
-                    <GridView.ColumnHeaderContainerStyle>
-                        <Style>
-                            <Setter Property="TextElement.FontSize" Value="17" />
-                        </Style>
-                    </GridView.ColumnHeaderContainerStyle>
-                    <GridViewColumn Header="Código" Width="200">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Designação" Width="500">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Quantidade" Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Preço Unit." Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Preço Total" Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding c1}" FontSize="15px"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <DataGrid Style="{StaticResource dataGrid}" x:Name="dataGridVenda" AllowDrop="False" ItemsSource="{Binding}" Grid.ColumnSpan="5" Grid.Row="2" Margin="20,50,20,50" MinHeight="100" Height="300" ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.HorizontalScrollBarVisibility="Auto" Initialized="dataGridVenda_Initialized" CellEditEnding="dataGridVenda_CellEditEnding" >
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#00bf8c" />
+                    <Setter Property="FontSize" Value="15" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
 
         
+        <TextBlock Style="{StaticResource textBlock}" x:Name="total" Text="Total: " Grid.Column="2" Grid.Row="3" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBlock Style="{StaticResource textBlock}" x:Name="totalE" Text="00,00 €" Grid.Column="3" Grid.Row="3" FontSize="30" VerticalAlignment="Center"/>
+        <Button Style="{StaticResource botoes}" x:Name="concluirVenda" Content="Concluir" Grid.Column="4" Grid.Row="3" Margin="0,35,10,0" VerticalAlignment="Top" MinWidth="100" MinHeight="55" Click="concluirVenda_Click" Grid.RowSpan="2"/>
 
-        <TextBlock x:Name="total" Text="Total: "  Grid.Column="3" Grid.Row="4" FontSize="30" VerticalAlignment="Center"/>
-        <Button x:Name="concluirVenda" Content="Concluir" Grid.Column="4" Grid.Row="4" Width="150" Height="50"/>
+        <UserControl Loaded="UserControl_Loaded">
+        </UserControl>
 
         <DockPanel Height="20" Grid.ColumnSpan="5">
             <Menu Style="{StaticResource menu}" DockPanel.Dock="Top">
                 <MenuItem Header="Cliente">
-                    <MenuItem Header="Venda" Style="{StaticResource menuItem}" Click="vendaCliente_Click"></MenuItem>
-                    <MenuItem Header="Reserva" Style="{StaticResource menuItem}" Click="reservaCliente_Click"></MenuItem>
-                    <MenuItem Header="Gerir Clientes" Style="{StaticResource menuItem}" Click="gerirCliente_Click"></MenuItem>
+                    <MenuItem Header="Venda" Style="{StaticResource menuItem}" Click="vendaCliente_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\007-shopping-cart-1.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Reserva" Style="{StaticResource menuItem}" Click="reservaCliente_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\006-shopping-cart.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Gerir Clientes" Style="{StaticResource menuItem}" Click="gerirCliente_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\008-users.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Criar Ficha de Cliente" Style="{StaticResource menuItem}" Click="criarFichaCliente_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\001-add-user.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="Loja">
-                    <MenuItem Header="Stock" Style="{StaticResource menuItem}" Click="discos_Click"></MenuItem>
-                    <MenuItem Header="Adicionar disco" Style="{StaticResource menuItem}" Click="adicionaDisco_Click"></MenuItem>
+                    <MenuItem Header="Stock" Style="{StaticResource menuItem}" Click="discos_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\003-stock.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Adicionar disco" Style="{StaticResource menuItem}" Click="adicionaDisco_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\002-compact-disc.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="Fornecedor">
-                    <MenuItem Header="Encomenda" Style="{StaticResource menuItem}" Click="encomendaFornecedor_Click"></MenuItem>
-                    <MenuItem Header="Validar Encomenda" Style="{StaticResource menuItem}" Click="validarFornecedor_Click"></MenuItem>
-                    <MenuItem Header="Gerir Fornecedores" Style="{StaticResource menuItem}" Click="gerirFornecedor_Click"></MenuItem>
+                    <MenuItem Header="Encomenda" Style="{StaticResource menuItem}" Click="encomendaFornecedor_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\005-buy.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Validar Encomenda" Style="{StaticResource menuItem}" Click="validarFornecedor_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\004-check.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Gerir Fornecedores" Style="{StaticResource menuItem}" Click="gerirFornecedor_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\008-users.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Criar Ficha de Fornecedor" Style="{StaticResource menuItem}" Click="criarFichaFornecedor_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\001-add-user.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
             </Menu>
         </DockPanel>

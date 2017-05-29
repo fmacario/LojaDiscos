@@ -41,18 +41,60 @@
         <DockPanel Height="20" Grid.ColumnSpan="5">
             <Menu Style="{StaticResource menu}" DockPanel.Dock="Top">
                 <MenuItem Header="Cliente">
-                    <MenuItem Header="Venda" Style="{StaticResource menuItem}" Click="vendaCliente_Click"></MenuItem>
-                    <MenuItem Header="Reserva" Style="{StaticResource menuItem}" Click="reservaCliente_Click"></MenuItem>
-                    <MenuItem Header="Gerir Clientes" Style="{StaticResource menuItem}" Click="gerirCliente_Click"></MenuItem>
+                    <MenuItem Header="Venda" Style="{StaticResource menuItem}" Click="vendaCliente_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\007-shopping-cart-1.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Reserva" Style="{StaticResource menuItem}" Click="reservaCliente_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\006-shopping-cart.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Gerir Clientes" Style="{StaticResource menuItem}" Click="gerirCliente_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\008-users.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Criar Ficha de Cliente" Style="{StaticResource menuItem}" Click="criarFichaCliente_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\001-add-user.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="Loja">
-                    <MenuItem Header="Stock" Style="{StaticResource menuItem}" Click="discos_Click"></MenuItem>
-                    <MenuItem Header="Adicionar disco" Style="{StaticResource menuItem}" Click="adicionaDisco_Click"></MenuItem>
+                    <MenuItem Header="Stock" Style="{StaticResource menuItem}" Click="discos_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\003-stock.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Adicionar disco" Style="{StaticResource menuItem}" Click="adicionaDisco_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\002-compact-disc.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="Fornecedor">
-                    <MenuItem Header="Encomenda" Style="{StaticResource menuItem}" Click="encomendaFornecedor_Click"></MenuItem>
-                    <MenuItem Header="Validar Encomenda" Style="{StaticResource menuItem}" Click="validarFornecedor_Click"></MenuItem>
-                    <MenuItem Header="Gerir Fornecedores" Style="{StaticResource menuItem}" Click="gerirFornecedor_Click"></MenuItem>
+                    <MenuItem Header="Encomenda" Style="{StaticResource menuItem}" Click="encomendaFornecedor_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\005-buy.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Validar Encomenda" Style="{StaticResource menuItem}" Click="validarFornecedor_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\004-check.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Gerir Fornecedores" Style="{StaticResource menuItem}" Click="gerirFornecedor_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\008-users.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Criar Ficha de Fornecedor" Style="{StaticResource menuItem}" Click="criarFichaFornecedor_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\001-add-user.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
             </Menu>
         </DockPanel>

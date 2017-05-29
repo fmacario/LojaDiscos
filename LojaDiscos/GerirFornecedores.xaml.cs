@@ -23,10 +23,18 @@ namespace LojaDiscos
     /// </summary>
     public partial class GerirFornecedores : Page
     {
+        Boolean primeiraVez = true;
         public GerirFornecedores()
         {
             InitializeComponent();
             List();
+        }
+
+        public GerirFornecedores(string s)
+        {
+            InitializeComponent();
+            List();
+            ListSearch(s);
         }
 
         private void List()
@@ -57,21 +65,20 @@ namespace LojaDiscos
         {
             DataGridRow row = sender as DataGridRow;
             // Some operations with this row
-
-            AlterarFornecedor alt = new AlterarFornecedor();
-            this.NavigationService.Navigate(alt);
+            //MessageBox.Show(row.ToString());
+            AlterarFornecedor alterarFornecedor_ = new AlterarFornecedor();
+            this.NavigationService.Navigate(alterarFornecedor_);
 
 
             DataRowView rowview = dataGrid.SelectedItem as DataRowView;
-            alt.nif2.Text = rowview.Row[0].ToString();
-            alt.nome2.Text = rowview.Row[1].ToString();
-            alt.nTel2.Text = rowview.Row[2].ToString();
-            alt.morada2.Text = rowview.Row[3].ToString();
-            alt.email2.Text = rowview.Row[4].ToString(); ;
-
-
+            alterarFornecedor_.nif2.Text = rowview.Row[0].ToString();
+            alterarFornecedor_.nome2.Text = rowview.Row[1].ToString();
+            alterarFornecedor_.nTel2.Text = rowview.Row[2].ToString();
+            alterarFornecedor_.morada2.Text = rowview.Row[3].ToString();
+            alterarFornecedor_.email2.Text = rowview.Row[4].ToString(); ;
 
         }
+
         private void dataGrid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Editar.Visibility = Visibility.Visible;
@@ -99,7 +106,17 @@ namespace LojaDiscos
 
         private void pesquisar_Click(object sender, RoutedEventArgs e)
         {
-            ListSearch();
+            if (!primeiraVez)
+            {
+                GerirClientes g = new GerirClientes(nif_pesq.Text);
+                this.NavigationService.Navigate(g);
+            }
+            else
+            {
+                primeiraVez = false;
+                mostrarTodos.Visibility = Visibility.Visible;
+                ListSearch();
+            }
         }
 
         private void ListSearch()
@@ -124,6 +141,32 @@ namespace LojaDiscos
             }
         }
 
+        private void ListSearch(string s)
+        {
+            primeiraVez = false;
+            mostrarTodos.Visibility = Visibility.Visible;
+            nif_pesq.Text = s;
+
+            //SqlConnection con = ConnectionHelper.GetConnection();
+
+            using (SqlConnection sc = ConnectionHelper.GetConnection())
+            {
+                sc.Open();
+                //string sql = "Select * FROM Pessoa As P JOIN Fornecedor As C ON P.nif = C.nif WHERE [nif]= @nif";
+                string sql = "Select * FROM Pessoa WHERE [nif]= @nif";
+                SqlCommand com = new SqlCommand(sql, sc);
+                com.Parameters.AddWithValue("@nif", s);
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dataGrid.ItemsSource = dt.DefaultView;
+                }
+
+            }
+        }
+
         private void dataGrid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
 
@@ -135,14 +178,25 @@ namespace LojaDiscos
             var col3 = 0.1;
             var col4 = 0.3;
             var col5 = 0.2;
-            var col6 = 0;
 
             dataGrid.Columns[0].Width = workingWidth * col1;
+            dataGrid.Columns[0].Header = "Nº Contribuinte";
             dataGrid.Columns[1].Width = workingWidth * col2;
+            dataGrid.Columns[1].Header = "Nome";
             dataGrid.Columns[2].Width = workingWidth * col3;
+            dataGrid.Columns[2].Header = "Telefone";
             dataGrid.Columns[3].Width = workingWidth * col4;
+            dataGrid.Columns[3].Header = "Morada";
             dataGrid.Columns[4].Width = workingWidth * col5;
-            dataGrid.Columns[5].Width = workingWidth * col6;
+            dataGrid.Columns[4].Header = "Email";
+            if (primeiraVez)
+                dataGrid.Columns[5].Visibility = Visibility.Hidden;
+        }
+
+        private void mostrarTodos_Click(object sender, RoutedEventArgs e)
+        {
+            GerirClientes gerirClientes = new GerirClientes();
+            this.NavigationService.Navigate(gerirClientes);
         }
 
         private void vendaCliente_Click(object sender, RoutedEventArgs e)
@@ -193,6 +247,10 @@ namespace LojaDiscos
             this.NavigationService.Navigate(criarDisco);
         }
 
-      
+        private void criarFichaCliente_Click(object sender, RoutedEventArgs e)
+        {
+            CriarFichaCliente criarFichaCliente = new CriarFichaCliente();
+            this.NavigationService.Navigate(criarFichaCliente);
+        }
     }
 }

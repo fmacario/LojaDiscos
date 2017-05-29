@@ -47,7 +47,7 @@
 
         <TextBlock Style="{StaticResource textBlock}" x:Name="total" Text="Total: " Grid.Column="2" Grid.Row="4" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Right"/>
         <TextBlock Style="{StaticResource textBlock}" x:Name="totalE" Text="00,00 €" Grid.Column="3" Grid.Row="4" FontSize="30" VerticalAlignment="Center"/>
-        <Button Style="{StaticResource botoes}" x:Name="concluirVenda" Content="Concluir" Grid.Column="4" Grid.Row="3" Margin="0,35,10,0" VerticalAlignment="Top" MinWidth="100" MinHeight="55" Click="concluirVenda_Click" Grid.RowSpan="2"/>
+        <Button Style="{StaticResource botoes}" x:Name="concluirVenda" Content="Concluir" Grid.Column="4" Grid.Row="4" Margin="0,35,10,0" VerticalAlignment="Top" MinWidth="100" MinHeight="55" Click="concluirVenda_Click" Grid.RowSpan="2"/>
 
         <UserControl Loaded="UserControl_Loaded">
         </UserControl>
@@ -68,6 +68,11 @@
                     <MenuItem Header="Gerir Clientes" Style="{StaticResource menuItem}" Click="gerirCliente_Click">
                         <MenuItem.Icon>
                             <Image Source="png\008-users.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Criar Ficha de Cliente" Style="{StaticResource menuItem}" Click="criarFichaCliente_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\001-add-user.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
@@ -97,6 +102,11 @@
                     <MenuItem Header="Gerir Fornecedores" Style="{StaticResource menuItem}" Click="gerirFornecedor_Click">
                         <MenuItem.Icon>
                             <Image Source="png\008-users.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Criar Ficha de Fornecedor" Style="{StaticResource menuItem}" Click="criarFichaFornecedor_Click">
+                        <MenuItem.Icon>
+                            <Image Source="png\001-add-user.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>

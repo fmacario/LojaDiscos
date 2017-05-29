@@ -48,6 +48,11 @@ namespace LojaDiscos
             }
         }
 
+        private void cancelar_Click(object sender, RoutedEventArgs e)
+        {
+            GerirFornecedores gerirFornecedores = new GerirFornecedores();
+            this.NavigationService.Navigate(gerirFornecedores);
+        }
 
         private void vendaCliente_Click(object sender, RoutedEventArgs e)
         {
@@ -95,6 +100,18 @@ namespace LojaDiscos
         {
             CriarDisco criarDisco = new CriarDisco();
             this.NavigationService.Navigate(criarDisco);
+        }
+
+        private void criarFichaFornecedor_Click(object sender, RoutedEventArgs e)
+        {
+            CriarFichaFornecedor criarFichaFornecedor = new CriarFichaFornecedor();
+            this.NavigationService.Navigate(criarFichaFornecedor);
+        }
+
+        private void criarFichaCliente_Click(object sender, RoutedEventArgs e)
+        {
+            CriarFichaCliente criarFichaCliente = new CriarFichaCliente();
+            this.NavigationService.Navigate(criarFichaCliente);
         }
     }
 }

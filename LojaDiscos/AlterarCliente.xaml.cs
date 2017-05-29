@@ -34,14 +34,14 @@ namespace LojaDiscos
         {
             this.s = str;
             InitializeComponent();
-            back.Visibility = Visibility.Visible;
+            cancelar.Visibility = Visibility.Visible;
         }
 
         public AlterarCliente(string str, string nif)
         {
             this.s = str;
             InitializeComponent();
-            back.Visibility = Visibility.Visible;
+            cancelar.Visibility = Visibility.Visible;
             MessageBox.Show(nif);
             nif2.Text = nif;
         }
@@ -141,6 +141,24 @@ namespace LojaDiscos
         {
             CriarDisco criarDisco = new CriarDisco();
             this.NavigationService.Navigate(criarDisco);
+        }
+
+        private void cancelar_Click(object sender, RoutedEventArgs e)
+        {
+            GerirClientes gerirClientes = new GerirClientes();
+            this.NavigationService.Navigate(gerirClientes);
+        }
+
+        private void criarFichaFornecedor_Click(object sender, RoutedEventArgs e)
+        {
+            CriarFichaFornecedor criarFichaFornecedor = new CriarFichaFornecedor();
+            this.NavigationService.Navigate(criarFichaFornecedor);
+        }
+
+        private void criarFichaCliente_Click(object sender, RoutedEventArgs e)
+        {
+            CriarFichaCliente criarFichaCliente = new CriarFichaCliente();
+            this.NavigationService.Navigate(criarFichaCliente);
         }
     }
 }
