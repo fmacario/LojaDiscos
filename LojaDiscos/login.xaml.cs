@@ -28,8 +28,15 @@ namespace LojaDiscos
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            Venda venda = new Venda();
-            this.NavigationService.Navigate(venda);
+            if (textBox.Text.Length == 0 || textBox_Copy.Password.Length == 0)
+            {
+                MessageBox.Show("Username e/ou Password inválidos");
+            }
+            else
+            { 
+                Venda venda = new Venda();
+                this.NavigationService.Navigate(venda);
+            }
         }
     }
 }

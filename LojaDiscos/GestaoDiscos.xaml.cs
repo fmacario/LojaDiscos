@@ -82,14 +82,14 @@ namespace LojaDiscos
         private void wpd_MouseLeftButtonUp(object sender, RoutedEventArgs e)
         {
             // codigo se cliacado (editar cd)
-            MessageBox.Show(sender.GetType().ToString());
+            //MessageBox.Show(sender.GetType().ToString());
         }
 
         private void pesquisarCD()
         {
-
+            Boolean existe = true;
             //pesquisa por codigo disco
-            if (comboBox.Text == "Código")
+            if (comboBox.Text == "Código" || comboBox.Text == "Pesquisar por: Código")
             {
                 SqlConnection conn = ConnectionHelper.GetConnection();
                 WrapPanel wpd = new WrapPanel();
@@ -129,6 +129,9 @@ namespace LojaDiscos
                     preço.Content = "Preço: " + cmd.Parameters["@preço"].Value.ToString() + "€";
                     stock.Content = "Stock: " + cmd.Parameters["@stock"].Value.ToString();
                     */
+
+                    if (cmd.Parameters["@artista"].Value.ToString().Length == 0)
+                        existe = false;
 
                     Label artista = new Label();
                     artista.Foreground = Brushes.White;
@@ -179,7 +182,10 @@ namespace LojaDiscos
                     wpd.Children.Add(image);
 
                 }
-                this.wrapPanelDiscos.Children.Add(wpd);
+                if(existe)
+                    this.wrapPanelDiscos.Children.Add(wpd);
+                else
+                    MessageBox.Show("Nenhum disco encontrado");
             }
             //pesquisa por ano
             else if (comboBox.Text == "Ano")    // tem de se acrescentar um for. a cada iteração adiciona um novo wpd
@@ -223,6 +229,8 @@ namespace LojaDiscos
                     preço.Content = "Preço: " + cmd.Parameters["@preço"].Value.ToString() + "€";
                     stock.Content = "Stock: " + cmd.Parameters["@stock"].Value.ToString();
                     */
+                    if (cmd.Parameters["@artista"].Value.ToString().Length == 0)
+                        existe = false;
 
                     Label artista = new Label();
                     artista.Foreground = Brushes.White;
@@ -276,7 +284,10 @@ namespace LojaDiscos
 
                 }
                 wpd.MouseLeftButtonUp += wpd_MouseLeftButtonUp;
-                this.wrapPanelDiscos.Children.Add(wpd);
+                if (existe)
+                    this.wrapPanelDiscos.Children.Add(wpd);
+                else
+                    MessageBox.Show("Nenhum disco encontrado");
             }
         }
 

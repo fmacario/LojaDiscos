@@ -81,9 +81,14 @@ namespace LojaDiscos
                     conn.Close();
                     MessageBox.Show("Cliente adicionado com sucesso", "Sucesso!");
 
-                    if (s == "venda")
+                    if (s == "Venda")
                     {
                         Venda v = new Venda(nif2.Text);
+                        this.NavigationService.Navigate(v);
+                    }
+                    else if (s == "Reserva")
+                    {
+                        Reserva v = new Reserva(nif2.Text);
                         this.NavigationService.Navigate(v);
                     }
                     else
@@ -155,6 +160,20 @@ namespace LojaDiscos
         {
             CriarFichaCliente criarFichaCliente = new CriarFichaCliente();
             this.NavigationService.Navigate(criarFichaCliente);
+        }
+
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            if (s == "Venda")
+            {
+                Venda v = new Venda();
+                this.NavigationService.Navigate(v);
+            }
+            else if (s == "Reserva")
+            {
+                Reserva v = new Reserva();
+                this.NavigationService.Navigate(v);
+            }
         }
     }
 }

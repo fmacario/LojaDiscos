@@ -93,8 +93,8 @@ namespace LojaDiscos
                         if (MessageBox.Show("NIF não encontrado. Deseja adicionar novo cliente?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                         {
                             //do no stuff
-                            Venda contin = new Venda();
-                            this.NavigationService.Navigate(contin);
+                            //Venda contin = new Venda();
+                            //this.NavigationService.Navigate(contin);
 
                         }
                         else
@@ -132,7 +132,7 @@ namespace LojaDiscos
 
         private void addCliente_Click(object sender, RoutedEventArgs e)
         {
-            CriarFichaCliente newcliente = new CriarFichaCliente("venda");
+            CriarFichaCliente newcliente = new CriarFichaCliente("Venda");
             this.NavigationService.Navigate(newcliente);
         }
 
