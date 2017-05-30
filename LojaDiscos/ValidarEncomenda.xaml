@@ -80,12 +80,12 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <DataGrid x:Name="dataGrid" Margin="10,84,10,0" VerticalAlignment="Top" RenderTransformOrigin="5.865,7.137" Height="293" Grid.ColumnSpan="2" Grid.RowSpan="2">
+        <DataGrid x:Name="dataGrid" Margin="10,84,10,0" VerticalAlignment="Top" RenderTransformOrigin="5.865,7.137" Height="293" Grid.ColumnSpan="2" Grid.RowSpan="2" SizeChanged="dataGrid_SizeChanged">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Style="{StaticResource botoes}" x:Name="pesquisa" Content="Validar" Margin="389,402,0,-339" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="101" Grid.Column="0" Grid.Row="1" Click="pesquisa_Click"/>
+        <Button Style="{StaticResource botoes}" x:Name="pesquisa" Content="Validar"  Height="44" VerticalAlignment="Center" HorizontalAlignment="Left" Width="101" Grid.Column="1" Grid.Row="2" Click="pesquisa_Click"/>
 
     </Grid>
 </Page>

@@ -128,5 +128,32 @@ namespace LojaDiscos
 
             }
         }
+
+        private void dataGrid_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            DataGrid dataGrid = sender as DataGrid;
+
+            var workingWidth = dataGrid.ActualWidth - SystemParameters.VerticalScrollBarWidth; // take into account vertical scrollbar
+            var col1 = 0.2;
+            var col2 = 0.1;
+            var col3 = 0.2;
+            var col4 = 0.2;
+            var col5 = 0.2;
+            var col6 = 0.1;
+
+            dataGrid.Columns[0].Width = workingWidth * col1;
+            dataGrid.Columns[0].Header = "Todas as quantidades recebidas";
+            dataGrid.Columns[1].Width = workingWidth * col2;
+            dataGrid.Columns[1].Header = "Quantidade";
+            dataGrid.Columns[2].Width = workingWidth * col3;
+            dataGrid.Columns[2].Header = "ID Encomenda";
+            dataGrid.Columns[3].Width = workingWidth * col4;
+            dataGrid.Columns[3].Header = "Data Encomenda";
+            dataGrid.Columns[4].Width = workingWidth * col5;
+            dataGrid.Columns[4].Header = "NIF Fornecedor";
+            dataGrid.Columns[5].Width = workingWidth * col6;
+            dataGrid.Columns[5].Header = "ID Disco";
+            dataGrid.Columns[6].Visibility = Visibility.Hidden;
+        }
     }
 }
