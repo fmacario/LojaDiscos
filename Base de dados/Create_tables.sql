@@ -1,4 +1,6 @@
 ﻿
+
+
 CREATE TABLE Genero(
 	 id_genero int IDENTITY(1,1) NOT NULL,
 	 genero varchar(50),

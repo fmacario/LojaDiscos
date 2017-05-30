@@ -12,7 +12,14 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
         <DockPanel Height="20" Grid.ColumnSpan="5">
             <Menu Style="{StaticResource menu}" DockPanel.Dock="Top">
                 <MenuItem Header="Cliente">
@@ -73,13 +80,12 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="25,134,0,-381" VerticalAlignment="Top" RenderTransformOrigin="5.865,7.137" Height="326" Width="445">
+        <DataGrid x:Name="dataGrid" Margin="10,84,10,0" VerticalAlignment="Top" RenderTransformOrigin="5.865,7.137" Height="293" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Style="{StaticResource botoes}" x:Name="pesquisa" Content="Selecionar" Margin="171,88,0,-34" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="101"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Right" Margin="0,88,355,-32" VerticalAlignment="Top" Width="120"/>
+        <Button Style="{StaticResource botoes}" x:Name="pesquisa" Content="Validar" Margin="389,402,0,-339" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="101" Grid.Column="0" Grid.Row="1" Click="pesquisa_Click"/>
 
     </Grid>
 </Page>

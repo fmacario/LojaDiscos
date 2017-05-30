@@ -14,32 +14,16 @@
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition />
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto" />
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-
-
-        <DataGrid Style="{StaticResource dataGrid}" x:Name="dataGridEncomenda" IsReadOnly="True" ItemsSource="{Binding}" Grid.ColumnSpan="5" Grid.Row="2" Margin="20,25,20,75" MinHeight="300" Height="auto" ScrollViewer.VerticalScrollBarVisibility="Visible"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-            <DataGrid.Resources>
-                <Style TargetType="{x:Type DataGridColumnHeader}">
-                    <Setter Property="Background" Value="#00bf8c" />
-                    <Setter Property="FontSize" Value="15" />
-                    <Setter Property="FontWeight" Value="Bold" />
-                </Style>
-            </DataGrid.Resources>
-
-        </DataGrid>
         <!--<DataGrid x:Name="dataGrid" ItemsSource="{Binding}" Grid.ColumnSpan="5" Grid.Row="1" Width="auto" Margin="20,50,20,50" MinHeight="300" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SizeChanged="dataGrid_SizeChanged" />-->
 
         <DockPanel Height="20" Grid.ColumnSpan="5">
-            <Menu Style="{StaticResource menu}" DockPanel.Dock="Top">
+            <Menu Style="{StaticResource menu}" DockPanel.Dock="Top" HorizontalAlignment="Left" Width="333" RenderTransformOrigin="0.503,0.4">
                 <MenuItem Header="Cliente">
                     <MenuItem Header="Venda" Style="{StaticResource menuItem}" Click="vendaCliente_Click">
                         <MenuItem.Icon>
@@ -98,7 +82,13 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <Button Style="{StaticResource botoes}" x:Name="pesquisa" Content="Selecionar" Grid.Column="2" Grid.Row="1" Height="24" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="101" Grid.ColumnSpan="2"/>
-        <ComboBox x:Name="comboBox" Grid.ColumnSpan="2" HorizontalAlignment="Right"  Grid.Row="1" VerticalAlignment="Bottom" Width="91" Margin="0,0,22,0"/>
+        <TextBox Style="{StaticResource textBox}" x:Name="textBox" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Height="19"  Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Center" Width="133" Margin="0,60,0,235"/>
+        <ComboBox x:Name="comboBox" ItemsSource="{Binding}" Grid.ColumnSpan="2" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="133" Grid.Column="1" Margin="0,128,0,0"/>
+        <TextBlock Style="{StaticResource textBlock}"  x:Name="ID_DISCO"  HorizontalAlignment="Left" Margin="51,60,0,222" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" RenderTransformOrigin="0.293,-0.062"><Run Text="ID DISCO"/><LineBreak/><Run/></TextBlock>
+        <TextBlock Style="{StaticResource textBlock}"  x:Name="textBlock3" HorizontalAlignment="Left" Margin="51,128,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Fornecedor" VerticalAlignment="Top" RenderTransformOrigin="0.293,-0.062" Width="68" Grid.ColumnSpan="2"/>
+        <Button x:Name="button" Style="{StaticResource botoes}" Content="Encomendar" Grid.Column="1" HorizontalAlignment="Left" Margin="58,76,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="button_Click"/>
+        <TextBlock Style="{StaticResource textBlock}"  x:Name="textBlock3_Copy" HorizontalAlignment="Left" Margin="51,200,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Quatidade" VerticalAlignment="Top" RenderTransformOrigin="0.293,-0.062" Width="68" Grid.ColumnSpan="2"/>
+        <TextBox Style="{StaticResource textBox}" x:Name="textBox_Copy" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Height="19"  Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Margin="0,197,0,0"/>
+
     </Grid>
 </Page>

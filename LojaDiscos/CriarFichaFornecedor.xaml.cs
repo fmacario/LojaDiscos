@@ -32,7 +32,7 @@ namespace LojaDiscos
         {
             SqlConnection conn = ConnectionHelper.GetConnection();
 
-            using (SqlCommand cmd = new SqlCommand("InserirCliente", conn))
+            using (SqlCommand cmd = new SqlCommand("InserirFornecedor", conn))
             {
 
                 cmd.CommandType = CommandType.StoredProcedure;

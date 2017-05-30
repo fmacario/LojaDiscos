@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static LojaDiscos.MainWindow;
 
 namespace LojaDiscos
 {
@@ -23,6 +26,7 @@ namespace LojaDiscos
         public ValidarEncomenda()
         {
             InitializeComponent();
+            List();
         }
 
 
@@ -84,6 +88,45 @@ namespace LojaDiscos
         {
             CriarFichaCliente criarFichaCliente = new CriarFichaCliente();
             this.NavigationService.Navigate(criarFichaCliente);
+        }
+
+        private void pesquisa_Click(object sender, RoutedEventArgs e)
+        {
+            //SqlConnection con = ConnectionHelper.GetConnection();
+            MessageBox.Show("Encomenda validada", "Sucesso!");
+            Venda menu = new Venda();
+            this.NavigationService.Navigate(menu);
+        }
+        private void List()
+        {
+            //SqlConnection con = ConnectionHelper.GetConnection();
+
+            using (SqlConnection sc = ConnectionHelper.GetConnection())
+            {
+                sc.Open();
+                string sql = "Select * FROM Encomendas as E JOIN Fornecedor as F ON E.nif_fornecedor=F.nif";
+                SqlCommand com = new SqlCommand(sql, sc);
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(com))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dataGrid.ItemsSource = dt.DefaultView;
+
+            
+                  
+               
+
+                    DataGridTextColumn qtd = new DataGridTextColumn();
+                    Encomenda enc = new Encomenda();
+                    int qtt = enc.getQuatidade();
+                    qtd.Binding = new Binding(Convert.ToString(qtt));
+                    qtd.Header = "Quantidade";
+                    
+                    dataGrid.Columns.Add(qtd);
+                }
+
+            }
         }
     }
 }

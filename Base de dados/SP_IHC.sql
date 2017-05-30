@@ -1,3 +1,28 @@
+-- inserir encomenda 
+GO 
+CREATE PROCEDURE InserirEncomenda
+	@id_disco			int,
+	@data1			date,
+	@nif_fornecedor			int
+AS
+
+BEGIN
+	INSERT INTO Encomendas (
+		id_disco,
+		nif_fornecedor,
+		data_encomenda) VALUES(
+			@id_disco,
+			@nif_fornecedor,
+			@data1)
+
+END
+-- Pesquisar encomenda por nome fornecedor
+Go
+Create procedure pesquisaEncomendaFornecedor
+@nome varchar(50) OUTPUT
+as
+select @nome=nome 
+from Pessoa As P JOIN Fornecedor AS F ON P.nif=F.nif JOIN Encomendas As E ON F.nif=E.nif_fornecedor
 
 
 -- editar fornecedor
