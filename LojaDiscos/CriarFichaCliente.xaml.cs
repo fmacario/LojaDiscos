@@ -42,7 +42,7 @@ namespace LojaDiscos
             this.s = str;
             InitializeComponent();
             back.Visibility = Visibility.Visible;
-            MessageBox.Show(nif);
+            //MessageBox.Show(nif);
             nif2.Text = nif;
         }
 
