@@ -1,5 +1,36 @@
 
 
+-- editar fornecedor
+GO
+CREATE PROCEDURE updateFornecedor
+    @nif			int,
+	@nome			varchar(50),
+	@morada			varchar(50),
+	@telefone			int,
+	@email		    varchar(30)
+AS
+BEGIN TRANSACTION
+		UPDATE Fornecedor SET nif=@nif From Fornecedor as F JOIN Pessoa as P ON F.nif = P.nif Where F.nif=@nif
+		
+        UPDATE Pessoa SET nif=@nif, nome=@nome, morada= @morada,telefone= @telefone, email=@email From Pessoa Where @nif=nif 
+COMMIT
+
+
+-- editar cliente
+GO
+CREATE PROCEDURE updateCliente
+    @nif			int,
+	@nome			varchar(50),
+	@morada			varchar(50),
+	@telefone			int,
+	@email		    varchar(30)
+AS
+BEGIN TRANSACTION
+		UPDATE Cliente SET nif=@nif From Cliente as C JOIN Pessoa as P ON C.nif = P.nif Where C.nif=@nif
+		
+        UPDATE Pessoa SET nif=@nif, nome=@nome, morada= @morada,telefone= @telefone, email=@email From Pessoa Where @nif=nif 
+COMMIT
+
 
 Create procedure registrarVenda
 	@data_venda	date,
