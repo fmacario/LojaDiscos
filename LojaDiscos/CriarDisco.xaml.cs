@@ -112,7 +112,7 @@ namespace LojaDiscos
                     c.ExecuteNonQuery();
                     conn.Close();
                     MessageBox.Show("Disco inserido com sucesso", "Sucesso!");
-                    Menu menu = new Menu();
+                    Venda menu = new Venda();
                     this.NavigationService.Navigate(menu);
                 }
 

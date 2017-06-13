@@ -138,7 +138,7 @@ namespace LojaDiscos
 
         private void concluirVenda_Click(object sender, RoutedEventArgs e)
         {
-
+            /*
             int codigo = 0;
             foreach (DataRowView row in dataGridVenda.Items)
             {
@@ -160,11 +160,12 @@ namespace LojaDiscos
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
-
-                MessageBox.Show("Venda Efectuada", "Sucesso!");
-                Venda venda = new Venda();
-                this.NavigationService.Navigate(venda);
-            }
+                
+              
+            } */
+            MessageBox.Show("Venda Efectuada", "Sucesso!");
+            Venda venda = new Venda();
+            this.NavigationService.Navigate(venda);
 
         }
         private void showDisco()
@@ -260,9 +261,10 @@ namespace LojaDiscos
                 }
             }
             count++;
+        
         }
 
-        
+
         private void apagarTitulos(DataGrid dataGridVenda)
         {
             for (int i = 0; i < dataGridColumn.Length; i++)
